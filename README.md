@@ -1,9 +1,9 @@
-# Fourfold Crackers & Snacks — Website
+# Fourfold Crackers — Website
 
-A fast, static landing page and online menu for **Fourfold Crackers & Snacks**, built with
-plain HTML, Tailwind CSS (compiled via the Tailwind CLI), and a small amount of vanilla JS.
-No frameworks, no build tooling beyond Tailwind, no checkout/e-commerce — this is a
-menu + landing page only.
+A fast, static landing page and online price list for **Fourfold Crackers**, a Diwali &
+festival fireworks/crackers business, built with plain HTML, Tailwind CSS (compiled via
+the Tailwind CLI), and a small amount of vanilla JS. No frameworks, no build tooling
+beyond Tailwind, no checkout/e-commerce — this is a price list + landing page only.
 
 Live site: **https://fourfold-trading.github.io/fourfold-trading-static-site/**
 (goes live once the branch is merged to `main` — see [Deployment](#deployment) below).
@@ -16,7 +16,7 @@ Live site: **https://fourfold-trading.github.io/fourfold-trading-static-site/**
 │   ├── index.html          # The whole site (single page, anchor-linked sections)
 │   ├── css/style.css       # Built Tailwind output (generated, not committed)
 │   └── js/
-│       ├── main.js             # Mobile nav toggle, renders the menu, footer year
+│       ├── main.js             # Mobile nav toggle, renders the price list, footer year
 │       └── products-data.js    # <-- EDIT THIS FILE to update products & prices
 ├── src/
 │   └── input.css           # Tailwind source (directives + small custom classes)
@@ -27,8 +27,8 @@ Live site: **https://fourfold-trading.github.io/fourfold-trading-static-site/**
 
 ## Updating products & prices
 
-You never need to touch the HTML/CSS to change the menu. Everything shown in the
-**Menu** section is generated from one file:
+You never need to touch the HTML/CSS to change the price list. Everything shown in the
+**Price List** section is generated from one file:
 
 ```
 public/js/products-data.js
@@ -41,9 +41,9 @@ and each item looks like this:
 {
   name: "Product Name",
   description: "Short one-line description.",
-  price: "$4.50",          // shown exactly as written — use whatever currency/format you like
-  image: null,              // set to a path like "images/my-photo.jpg" once you have real photos
-  emoji: "🍘"                // shown as a placeholder visual when `image` is null
+  price: "₹150",            // shown exactly as written — use whatever currency/format you like
+  image: null,               // set to a path like "images/my-photo.jpg" once you have real photos
+  emoji: "🎇"                 // shown as a placeholder visual when `image` is null
 }
 ```
 
@@ -84,7 +84,7 @@ python3 -m http.server --directory public 8080
 
 ## Customizing colors / branding
 
-The color palette (warm, earthy tones suited to a snacks brand) is defined in
+The color palette (warm tones suited to a festival/fireworks brand) is defined in
 `tailwind.config.js` under `theme.extend.colors` (`cream`, `spice`, `turmeric`, `espresso`).
 Change the hex values there to adjust the whole site's palette consistently. Fonts are
 loaded from Google Fonts in `public/index.html` (`Poppins` for headings, `Inter` for body
