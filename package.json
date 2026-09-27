@@ -1,0 +1,17 @@
+{
+  "name": "fourfold-trading-static-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static landing page + online price list for Fourfold Crackers (Diwali & festival fireworks)",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/style.css --minify",
+    "build": "npm run build:css",
+    "dev:css": "tailwindcss -i ./src/input.css -o ./public/css/style.css --watch",
+    "serve": "npx --yes serve public",
+    "dev": "npm-run-all --parallel dev:css serve"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.4.13"
+  }
+}

@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-espresso-700 font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-espresso-800;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-spice-500 ring-offset-2 ring-offset-cream-50;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-espresso-600 hover:text-spice-600 font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-spice-500 px-6 py-3 font-display font-semibold text-cream-50 shadow-sm transition-colors hover:bg-spice-600;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-spice-500 px-6 py-3 font-display font-semibold text-spice-600 transition-colors hover:bg-spice-50;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold;
+  }
+
+  .section-eyebrow {
+    @apply text-sm font-semibold uppercase tracking-widest text-spice-600;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-spice-600 focus:px-4 focus:py-2 focus:text-cream-50;
+  }
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fourfold Crackers | Fireworks &amp; Crackers for Every Festival</title>
+    <meta
+      name="description"
+      content="Fourfold Crackers — sparklers, chakkars, aerial fireworks and gift boxes for Diwali and every festival. View our price list and get in touch."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎆</text></svg>"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-40 border-b border-spice-100 bg-cream-50/95 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Primary">
+        <a href="#top" class="flex items-center gap-2 font-display text-xl font-bold text-espresso-800">
+          <span aria-hidden="true">🎆</span>
+          <span>Fourfold Crackers</span>
+        </a>
+
+        <ul class="hidden items-center gap-8 md:flex">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#menu">Price List</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#menu" class="hidden md:inline-flex btn-primary">View Price List</a>
+
+        <button
+          id="nav-toggle"
+          type="button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-espresso-700 md:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+
+      <div id="mobile-menu" class="hidden border-t border-spice-100 md:hidden">
+        <ul class="flex flex-col gap-1 px-4 py-3">
+          <li><a class="block rounded-lg px-3 py-2 nav-link" href="#about">About</a></li>
+          <li><a class="block rounded-lg px-3 py-2 nav-link" href="#menu">Price List</a></li>
+          <li><a class="block rounded-lg px-3 py-2 nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section id="top" class="relative overflow-hidden bg-gradient-to-b from-spice-50 to-cream-50">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2">
+          <div>
+            <p class="section-eyebrow">Diwali &amp; Festival Specials</p>
+            <h1 class="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">
+              Fourfold Crackers
+            </h1>
+            <p class="mt-4 max-w-md text-lg text-espresso-600">
+              Light up every celebration with our range of sparklers, chakkars, aerial fireworks and gift boxes —
+              trusted quality for Diwali and every festival.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#menu" class="btn-primary">View Price List</a>
+              <a href="#contact" class="btn-secondary">Contact Us</a>
+            </div>
+          </div>
+
+          <div
+            class="flex aspect-square items-center justify-center rounded-3xl bg-spice-100 text-8xl shadow-inner sm:aspect-[4/3]"
+            role="img"
+            aria-label="Placeholder hero image of fireworks and crackers"
+          >
+            🎆🎇✨
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title mt-3">About Fourfold Crackers</h2>
+        <p class="mt-6 text-lg leading-relaxed text-espresso-600">
+          Placeholder text: Fourfold Crackers has been supplying quality fireworks and crackers for Diwali and
+          festive celebrations for years. From sparklers to grand aerial displays, every product is sourced for
+          safety, brightness, and value. We believe every festival deserves to shine.
+        </p>
+      </section>
+
+      <!-- Menu / Price List -->
+      <section id="menu" class="bg-spice-50/60 px-4 py-16 sm:px-6">
+        <div class="mx-auto max-w-6xl">
+          <div class="mb-12 text-center">
+            <p class="section-eyebrow">Diwali &amp; Festival Range</p>
+            <h2 class="section-title mt-3">Our Price List</h2>
+            <p class="mt-4 text-espresso-600">
+              Products and prices below are placeholders — the real catalog will be added soon.
+            </p>
+          </div>
+
+          <div id="price-list"></div>
+
+          <p class="mt-12 text-center text-sm text-espresso-500">
+            🎇 Please use fireworks responsibly and follow all local safety guidelines and regulations.
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="px-4 py-16 sm:px-6">
+        <div class="mx-auto max-w-6xl">
+          <div class="mb-12 text-center">
+            <p class="section-eyebrow">Get In Touch</p>
+            <h2 class="section-title mt-3">Contact Us</h2>
+          </div>
+
+          <div class="grid gap-10 lg:grid-cols-2">
+            <address class="not-italic">
+              <ul class="space-y-4 text-espresso-700">
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true">📍</span>
+                  <span>123 Placeholder Street, Sample City, ST 00000</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true">📞</span>
+                  <a class="hover:text-spice-600" href="tel:+10000000000">+1 (000) 000-0000</a>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true">✉️</span>
+                  <a class="hover:text-spice-600" href="mailto:hello@example.com">hello@example.com</a>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true">💬</span>
+                  <a class="hover:text-spice-600" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
+                    Chat with us on WhatsApp
+                  </a>
+                </li>
+              </ul>
+
+              <div class="mt-6 flex gap-4" aria-label="Social media links">
+                <a
+                  href="#"
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
+                  aria-label="Follow us on Instagram"
+                >
+                  <span aria-hidden="true">📷</span>
+                </a>
+                <a
+                  href="#"
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
+                  aria-label="Follow us on Facebook"
+                >
+                  <span aria-hidden="true">📘</span>
+                </a>
+              </div>
+            </address>
+
+            <div class="overflow-hidden rounded-2xl border border-spice-100 shadow-sm">
+              <iframe
+                title="Placeholder map location — replace with your business address"
+                src="https://www.google.com/maps?q=India&output=embed"
+                class="h-72 w-full sm:h-full sm:min-h-[280px]"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-spice-100 bg-espresso-800 text-cream-100">
+      <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center sm:flex-row sm:justify-between sm:px-6">
+        <p class="text-sm">
+          &copy; <span id="year">2026</span> Fourfold Crackers. All rights reserved.
+        </p>
+        <div class="flex gap-4" aria-label="Social media links">
+          <a href="#" class="text-cream-100/80 hover:text-cream-100" aria-label="Follow us on Instagram">
+            <span aria-hidden="true">📷</span>
+          </a>
+          <a href="#" class="text-cream-100/80 hover:text-cream-100" aria-label="Follow us on Facebook">
+            <span aria-hidden="true">📘</span>
+          </a>
+          <a href="#" class="text-cream-100/80 hover:text-cream-100" aria-label="Chat with us on WhatsApp">
+            <span aria-hidden="true">💬</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
