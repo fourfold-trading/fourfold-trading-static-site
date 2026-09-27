@@ -2,13 +2,94 @@ import { menuCategories } from "./products-data.js";
 import { businessInfo } from "./business-info-data.js";
 import { faqItems } from "./faq-data.js";
 
+const priceListState = {
+  query: "",
+  categoryId: "all",
+};
+
+function getFilteredCategories() {
+  const query = priceListState.query.trim().toLowerCase();
+
+  return menuCategories
+    .filter((category) => priceListState.categoryId === "all" || category.id === priceListState.categoryId)
+    .map((category) => ({
+      ...category,
+      items: query
+        ? category.items.filter((item) => item.name.toLowerCase().includes(query))
+        : category.items,
+    }))
+    .filter((category) => category.items.length > 0);
+}
+
+function categoryButtonClass(isActive) {
+  return isActive
+    ? "rounded-full border border-spice-500 bg-spice-500 px-4 py-2 text-sm font-semibold text-cream-50 transition-colors"
+    : "rounded-full border border-spice-200 bg-white px-4 py-2 text-sm font-semibold text-espresso-700 transition-colors hover:border-spice-300 hover:bg-spice-50";
+}
+
+function renderCategoryFilters() {
+  const container = document.getElementById("category-filters");
+  if (!container) return;
+
+  const categories = [{ id: "all", name: "All" }, ...menuCategories.map(({ id, name }) => ({ id, name }))];
+
+  const fragment = document.createDocumentFragment();
+  categories.forEach(({ id, name }) => {
+    const isActive = id === priceListState.categoryId;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = name;
+    button.dataset.categoryId = id;
+    button.setAttribute("aria-pressed", String(isActive));
+    button.className = categoryButtonClass(isActive);
+
+    button.addEventListener("click", () => {
+      if (priceListState.categoryId === id) return;
+      priceListState.categoryId = id;
+
+      container.querySelectorAll("button").forEach((btn) => {
+        const active = btn.dataset.categoryId === id;
+        btn.setAttribute("aria-pressed", String(active));
+        btn.className = categoryButtonClass(active);
+      });
+
+      renderMenu();
+    });
+
+    fragment.appendChild(button);
+  });
+
+  container.replaceChildren(fragment);
+}
+
+function setupPriceListSearch() {
+  const input = document.getElementById("price-search");
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+    priceListState.query = input.value;
+    renderMenu();
+  });
+}
+
 function renderMenu() {
   const container = document.getElementById("price-list");
   if (!container) return;
 
+  const categories = getFilteredCategories();
+
+  if (categories.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "py-12 text-center text-espresso-600";
+    empty.textContent = "No products found — try a different search.";
+    container.replaceChildren(empty);
+    return;
+  }
+
   const fragment = document.createDocumentFragment();
 
-  menuCategories.forEach((category) => {
+  categories.forEach((category) => {
     const section = document.createElement("div");
     section.className = "mb-12 last:mb-0";
 
@@ -215,7 +296,9 @@ function setupFooterYear() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderCategoryFilters();
   renderMenu();
+  setupPriceListSearch();
   renderBusinessInfo();
   renderFAQ();
   setupMobileNav();
