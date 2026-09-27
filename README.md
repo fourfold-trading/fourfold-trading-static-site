@@ -58,8 +58,9 @@ add it to the array. To add/remove/edit products, add/remove/edit objects inside
 `items` array. Reload the page (or wait for the next deploy) to see the change — no other
 file needs to change.
 
-All current names, descriptions, and prices are **placeholders**. Replace them with the
-real catalog whenever it's ready.
+The catalog currently loaded is the real 2026 price list (17 categories, ~106 products).
+Keep it updated the same way — add/remove/edit objects directly in this file whenever
+prices or stock change.
 
 ## Updating business info (delivery, ordering, hours)
 
