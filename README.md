@@ -6,7 +6,7 @@ the Tailwind CLI), and a small amount of vanilla JS. No frameworks, no build too
 beyond Tailwind, no checkout/e-commerce — this is a price list + landing page only.
 
 Live site: **https://fourfold-trading.github.io/fourfold-trading-static-site/**
-(goes live once the branch is merged to `main` — see [Deployment](#deployment) below).
+(updates automatically whenever changes are merged to `main` — see [Deployment](#deployment) below).
 
 ## Project structure
 
@@ -16,8 +16,10 @@ Live site: **https://fourfold-trading.github.io/fourfold-trading-static-site/**
 │   ├── index.html          # The whole site (single page, anchor-linked sections)
 │   ├── css/style.css       # Built Tailwind output (generated, not committed)
 │   └── js/
-│       ├── main.js             # Mobile nav toggle, renders the price list, footer year
-│       └── products-data.js    # <-- EDIT THIS FILE to update products & prices
+│       ├── main.js                  # Mobile nav, renders price list/info/FAQ, footer year
+│       ├── products-data.js         # <-- EDIT to update products & prices
+│       ├── business-info-data.js    # <-- EDIT to update delivery/ordering/policy info
+│       └── faq-data.js              # <-- EDIT to update the FAQ accordion
 ├── src/
 │   └── input.css           # Tailwind source (directives + small custom classes)
 ├── tailwind.config.js      # Tailwind theme (colors, fonts, content paths)
@@ -55,6 +57,32 @@ file needs to change.
 All current names, descriptions, and prices are **placeholders**. Replace them with the
 real catalog whenever it's ready.
 
+## Updating business info (delivery, ordering, hours, license, age restriction)
+
+The **Ordering, Delivery & Policies** section (`#info`) is generated from:
+
+```
+public/js/business-info-data.js
+```
+
+It exports one `businessInfo` object with a fixed set of keys (`deliveryAreas`,
+`howToOrder`, `orderPolicy`, `paymentMethods`, `hours`, `license`, `ageRestriction`).
+Each is `{ icon, title, lines/text }` — edit the `lines` (or `text`) to update what's
+shown; the `license` and `ageRestriction` entries render in a distinct bordered callout
+box rather than the regular card grid, since they're safety/legal notices.
+
+## Updating the FAQ
+
+The FAQ accordion (`#faq`) is generated from:
+
+```
+public/js/faq-data.js
+```
+
+It exports a `faqItems` array of `{ question, answer }` objects, rendered as a
+collapsible accordion (one answer open at a time). Add, remove, or edit items freely —
+keep answers to 2-3 lines for the best fit.
+
 ## Running locally
 
 Requires [Node.js](https://nodejs.org/) 18+.
@@ -84,9 +112,11 @@ python3 -m http.server --directory public 8080
 
 ## Customizing colors / branding
 
-The color palette (warm tones suited to a festival/fireworks brand) is defined in
-`tailwind.config.js` under `theme.extend.colors` (`cream`, `spice`, `turmeric`, `espresso`).
-Change the hex values there to adjust the whole site's palette consistently. Fonts are
+The color palette is a dark, festive fireworks theme defined in `tailwind.config.js`
+under `theme.extend.colors`: `night` (background layers), `mist` (light text on dark
+backgrounds), `gold` (primary accent/CTAs/prices), and `ember` (secondary accent/legal
+callout). Change the hex values there to adjust the whole site's palette consistently —
+all combinations were chosen to keep text contrast at WCAG AA or better. Fonts are
 loaded from Google Fonts in `public/index.html` (`Poppins` for headings, `Inter` for body
 text) and mapped in `tailwind.config.js` under `theme.extend.fontFamily`.
 
