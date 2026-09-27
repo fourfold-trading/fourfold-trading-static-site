@@ -13,14 +13,14 @@ function renderMenu() {
     section.className = "mb-12 last:mb-0";
 
     const heading = document.createElement("h3");
-    heading.className = "mb-4 text-2xl font-bold text-mist-50";
+    heading.className = "mb-4 text-2xl font-bold text-espresso-800";
     heading.id = `category-${category.id}`;
     heading.textContent = category.name;
     section.appendChild(heading);
 
     const scrollWrap = document.createElement("div");
     scrollWrap.className =
-      "overflow-x-auto rounded-2xl border border-white/10 bg-night-800 shadow-sm";
+      "overflow-x-auto rounded-2xl border border-spice-100 bg-white shadow-sm";
 
     const table = document.createElement("table");
     table.className = "w-full border-collapse text-left";
@@ -28,7 +28,7 @@ function renderMenu() {
 
     const thead = document.createElement("thead");
     const headRow = document.createElement("tr");
-    headRow.className = "border-b border-white/10 bg-night-700";
+    headRow.className = "border-b border-spice-100 bg-spice-50";
     [
       { label: "Product", hideOnMobile: false, align: "" },
       { label: "Description", hideOnMobile: true, align: "" },
@@ -38,7 +38,7 @@ function renderMenu() {
       th.scope = "col";
       th.textContent = label;
       th.className = [
-        "px-3 sm:px-5 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-mist-300",
+        "px-3 sm:px-5 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-espresso-700",
         hideOnMobile ? "hidden sm:table-cell" : "",
         align,
       ]
@@ -52,28 +52,28 @@ function renderMenu() {
     const tbody = document.createElement("tbody");
     category.items.forEach((item) => {
       const row = document.createElement("tr");
-      row.className = "border-b border-white/5 last:border-b-0 even:bg-white/[0.02]";
+      row.className = "border-b border-spice-50 last:border-b-0 even:bg-spice-50/40";
 
       const nameCell = document.createElement("th");
       nameCell.scope = "row";
-      nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-mist-100";
+      nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-espresso-800";
       nameCell.textContent = item.name;
 
       const mobileDesc = document.createElement("span");
-      mobileDesc.className = "mt-1 block text-xs font-normal text-mist-400 sm:hidden";
+      mobileDesc.className = "mt-1 block text-xs font-normal text-espresso-600 sm:hidden";
       mobileDesc.textContent = item.description;
       nameCell.appendChild(mobileDesc);
       row.appendChild(nameCell);
 
       const descCell = document.createElement("td");
       descCell.textContent = item.description;
-      descCell.className = "hidden sm:table-cell px-5 py-4 align-top text-sm text-mist-300";
+      descCell.className = "hidden sm:table-cell px-5 py-4 align-top text-sm text-espresso-600";
       row.appendChild(descCell);
 
       const priceCell = document.createElement("td");
       priceCell.textContent = item.price;
       priceCell.className =
-        "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right font-bold text-gold-400";
+        "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right font-bold text-spice-600";
       row.appendChild(priceCell);
 
       tbody.appendChild(row);
@@ -93,13 +93,13 @@ function buildInfoCard({ icon, title, lines }) {
   card.className = "info-card";
 
   const heading = document.createElement("h3");
-  heading.className = "flex items-center gap-2 text-lg font-semibold text-mist-50";
+  heading.className = "flex items-center gap-2 text-lg font-semibold text-espresso-800";
   heading.innerHTML = `<span aria-hidden="true">${icon}</span> ${title}`;
   card.appendChild(heading);
 
   lines.forEach((line) => {
     const p = document.createElement("p");
-    p.className = "text-sm text-mist-300";
+    p.className = "text-sm text-espresso-600";
     p.textContent = line;
     card.appendChild(p);
   });
@@ -127,15 +127,15 @@ function renderBusinessInfo() {
   const legalFragment = document.createDocumentFragment();
   [businessInfo.license, businessInfo.ageRestriction].forEach(({ icon, title, text }, index) => {
     const block = document.createElement("div");
-    block.className = index === 0 ? "pb-5 mb-5 border-b border-ember-500/30" : "";
+    block.className = index === 0 ? "pb-5 mb-5 border-b border-spice-200" : "";
 
     const heading = document.createElement("h3");
-    heading.className = "flex items-center gap-2 text-base font-semibold text-mist-50";
+    heading.className = "flex items-center gap-2 text-base font-semibold text-espresso-800";
     heading.innerHTML = `<span aria-hidden="true">${icon}</span> ${title}`;
     block.appendChild(heading);
 
     const p = document.createElement("p");
-    p.className = "mt-2 text-sm text-mist-300";
+    p.className = "mt-2 text-sm text-espresso-600";
     p.textContent = text;
     block.appendChild(p);
 
@@ -174,7 +174,7 @@ function renderFAQ() {
 
     const panel = document.createElement("div");
     panel.id = `faq-panel-${index}`;
-    panel.className = "px-5 pb-4 text-sm text-mist-300";
+    panel.className = "px-5 pb-4 text-sm text-espresso-600";
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-labelledby", button.id);
     panel.hidden = true;
