@@ -94,7 +94,8 @@ function renderMenu() {
     section.className = "mb-12 last:mb-0";
 
     const heading = document.createElement("h3");
-    heading.className = "mb-4 text-2xl font-bold text-espresso-800";
+    heading.className =
+      "sticky top-[73px] md:top-[81px] z-10 mb-4 bg-cream-50 py-2 text-lg font-bold text-espresso-800 sm:text-2xl";
     heading.id = `category-${category.id}`;
     heading.textContent = category.name;
     section.appendChild(heading);
