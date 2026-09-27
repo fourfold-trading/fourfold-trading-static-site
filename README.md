@@ -47,7 +47,11 @@ and each item looks like this:
 }
 ```
 
-The price list is rendered as a table (grouped by category), not image cards.
+The price list is rendered as a table (grouped by category), not image cards. Above it,
+a search box and "All" + per-category filter buttons are generated automatically from
+this same data — there's nothing to configure, the category buttons always match
+whatever categories exist in `menuCategories`. Search matches product names
+(case-insensitive) within whichever category is currently selected.
 
 To add a new category, copy an existing category object (with its own unique `id`) and
 add it to the array. To add/remove/edit products, add/remove/edit objects inside an
