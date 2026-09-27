@@ -128,9 +128,9 @@ elsewhere on the site. Fonts are loaded from Google Fonts in `public/index.html`
 (`Poppins` for headings, `Inter` for body text) and mapped in `tailwind.config.js` under
 `theme.extend.fontFamily`.
 
-The business name, tagline, about text, and contact details in `public/index.html` are
-all placeholders — search for the placeholder address, phone, email, and WhatsApp link
-and replace them with real details. The hero background is an animated CSS/SVG firework
+The business name, tagline, about text, and contact details (phone numbers, email) in
+`public/index.html` are real — search for the phone/email markup in the `#contact`
+section to update them if they change. The hero background is an animated CSS/SVG firework
 graphic (three looping `.firework-burst` instances defined inline in `public/index.html`,
 animated via `@keyframes firework-burst` in `src/input.css`, and respecting
 `prefers-reduced-motion`) — there's no photo to swap in unless you want to replace it
