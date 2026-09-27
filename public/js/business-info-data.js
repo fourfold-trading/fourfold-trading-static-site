@@ -14,8 +14,8 @@ export const businessInfo = {
     icon: "📍",
     title: "Where We Deliver",
     lines: [
-      "Placeholder cities/areas: Sample City, Nearby Town, Riverside, North District.",
-      "Free delivery within 10 km of our shop — delivery charges may apply beyond that.",
+      "We deliver across Tamil Nadu, Kerala, Karnataka, and Andhra Pradesh.",
+      "Delivery charges vary based on your location.",
     ],
   },
   howToOrder: {
@@ -28,23 +28,20 @@ export const businessInfo = {
   },
   orderPolicy: {
     icon: "📦",
-    title: "Minimum Order & Bulk Pricing",
-    lines: [
-      "Minimum order: ₹500 for delivery orders (no minimum for in-store pickup).",
-      "Bulk & wholesale pricing available for orders above ₹10,000 — contact us for a quote.",
-    ],
+    title: "Minimum Order",
+    lines: ["Minimum order: ₹2,000 for delivery orders (no minimum for in-store pickup)."],
   },
   paymentMethods: {
     icon: "💳",
     title: "Payment Methods",
-    lines: ["Cash on delivery/pickup", "UPI (GPay, PhonePe, Paytm)", "Bank transfer (NEFT/IMPS)"],
+    lines: ["UPI (GPay, PhonePe, Paytm)", "Cash — accepted for in-store purchases only"],
   },
   hours: {
     icon: "🕒",
     title: "Business Hours",
     lines: [
-      "Mon–Sat: 10:00 AM – 8:00 PM · Sun: 10:00 AM – 2:00 PM (placeholder)",
-      "Note: We are open year-round for enquiries, with extended hours during the Diwali season.",
+      "We operate on a seasonal basis, primarily during Diwali and other major festival periods.",
+      "Please contact us by phone or WhatsApp to confirm current availability.",
     ],
   },
 };
