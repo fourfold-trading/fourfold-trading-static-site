@@ -4,27 +4,33 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50: "#FFFBF5",
-          100: "#FFF6E9",
-          200: "#FBEBD1",
+        // Deep indigo/purple night sky — page & card backgrounds
+        night: {
+          950: "#08051A",
+          900: "#0F0A24",
+          800: "#170F35",
+          700: "#211648",
         },
-        spice: {
-          50: "#FDF1EB",
-          100: "#FADFCF",
-          300: "#E39A6B",
-          500: "#C1622D",
-          600: "#A64E22",
-          700: "#853D1A",
+        // Near-white lavender text tones (light-on-dark, WCAG AA checked)
+        mist: {
+          50: "#FBFAFF",
+          100: "#F5F3FA",
+          300: "#C9C2DE",
+          400: "#A79FC7",
         },
-        turmeric: {
-          400: "#E8B23D",
-          500: "#D89B23",
+        // Gold/amber — primary accent, CTAs, prices
+        gold: {
+          300: "#FDE68A",
+          400: "#FBBF24",
+          500: "#F5B700",
+          600: "#D89B00",
         },
-        espresso: {
-          600: "#4A3327",
-          700: "#3A2A20",
-          800: "#2B1F17",
+        // Festive red — secondary accent, warnings
+        ember: {
+          400: "#F2545B",
+          500: "#E63946",
+          600: "#C1121F",
+          900: "#3A0A10",
         },
       },
       fontFamily: {

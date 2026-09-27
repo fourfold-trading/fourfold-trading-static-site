@@ -1,4 +1,6 @@
 import { menuCategories } from "./products-data.js";
+import { businessInfo } from "./business-info-data.js";
+import { faqItems } from "./faq-data.js";
 
 function renderMenu() {
   const container = document.getElementById("price-list");
@@ -11,14 +13,14 @@ function renderMenu() {
     section.className = "mb-12 last:mb-0";
 
     const heading = document.createElement("h3");
-    heading.className = "mb-4 text-2xl font-bold text-espresso-800";
+    heading.className = "mb-4 text-2xl font-bold text-mist-50";
     heading.id = `category-${category.id}`;
     heading.textContent = category.name;
     section.appendChild(heading);
 
     const scrollWrap = document.createElement("div");
     scrollWrap.className =
-      "overflow-x-auto rounded-2xl border border-spice-100 bg-white shadow-sm";
+      "overflow-x-auto rounded-2xl border border-white/10 bg-night-800 shadow-sm";
 
     const table = document.createElement("table");
     table.className = "w-full border-collapse text-left";
@@ -26,7 +28,7 @@ function renderMenu() {
 
     const thead = document.createElement("thead");
     const headRow = document.createElement("tr");
-    headRow.className = "border-b border-spice-100 bg-spice-50";
+    headRow.className = "border-b border-white/10 bg-night-700";
     [
       { label: "Product", hideOnMobile: false, align: "" },
       { label: "Description", hideOnMobile: true, align: "" },
@@ -36,7 +38,7 @@ function renderMenu() {
       th.scope = "col";
       th.textContent = label;
       th.className = [
-        "px-3 sm:px-5 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-espresso-700",
+        "px-3 sm:px-5 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-mist-300",
         hideOnMobile ? "hidden sm:table-cell" : "",
         align,
       ]
@@ -50,28 +52,28 @@ function renderMenu() {
     const tbody = document.createElement("tbody");
     category.items.forEach((item) => {
       const row = document.createElement("tr");
-      row.className = "border-b border-spice-50 last:border-b-0 even:bg-spice-50/40";
+      row.className = "border-b border-white/5 last:border-b-0 even:bg-white/[0.02]";
 
       const nameCell = document.createElement("th");
       nameCell.scope = "row";
-      nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-espresso-800";
+      nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-mist-100";
       nameCell.textContent = item.name;
 
       const mobileDesc = document.createElement("span");
-      mobileDesc.className = "mt-1 block text-xs font-normal text-espresso-500 sm:hidden";
+      mobileDesc.className = "mt-1 block text-xs font-normal text-mist-400 sm:hidden";
       mobileDesc.textContent = item.description;
       nameCell.appendChild(mobileDesc);
       row.appendChild(nameCell);
 
       const descCell = document.createElement("td");
       descCell.textContent = item.description;
-      descCell.className = "hidden sm:table-cell px-5 py-4 align-top text-sm text-espresso-600";
+      descCell.className = "hidden sm:table-cell px-5 py-4 align-top text-sm text-mist-300";
       row.appendChild(descCell);
 
       const priceCell = document.createElement("td");
       priceCell.textContent = item.price;
       priceCell.className =
-        "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right font-bold text-spice-600";
+        "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right font-bold text-gold-400";
       row.appendChild(priceCell);
 
       tbody.appendChild(row);
@@ -81,6 +83,124 @@ function renderMenu() {
     scrollWrap.appendChild(table);
     section.appendChild(scrollWrap);
     fragment.appendChild(section);
+  });
+
+  container.replaceChildren(fragment);
+}
+
+function buildInfoCard({ icon, title, lines }) {
+  const card = document.createElement("div");
+  card.className = "info-card";
+
+  const heading = document.createElement("h3");
+  heading.className = "flex items-center gap-2 text-lg font-semibold text-mist-50";
+  heading.innerHTML = `<span aria-hidden="true">${icon}</span> ${title}`;
+  card.appendChild(heading);
+
+  lines.forEach((line) => {
+    const p = document.createElement("p");
+    p.className = "text-sm text-mist-300";
+    p.textContent = line;
+    card.appendChild(p);
+  });
+
+  return card;
+}
+
+function renderBusinessInfo() {
+  const grid = document.getElementById("business-info-grid");
+  const legal = document.getElementById("legal-callout");
+  if (!grid || !legal) return;
+
+  const cards = [
+    businessInfo.deliveryAreas,
+    businessInfo.howToOrder,
+    businessInfo.orderPolicy,
+    { ...businessInfo.paymentMethods, lines: [businessInfo.paymentMethods.lines.join(" · ")] },
+    businessInfo.hours,
+  ];
+
+  const gridFragment = document.createDocumentFragment();
+  cards.forEach((data) => gridFragment.appendChild(buildInfoCard(data)));
+  grid.replaceChildren(gridFragment);
+
+  const legalFragment = document.createDocumentFragment();
+  [businessInfo.license, businessInfo.ageRestriction].forEach(({ icon, title, text }, index) => {
+    const block = document.createElement("div");
+    block.className = index === 0 ? "pb-5 mb-5 border-b border-ember-500/30" : "";
+
+    const heading = document.createElement("h3");
+    heading.className = "flex items-center gap-2 text-base font-semibold text-mist-50";
+    heading.innerHTML = `<span aria-hidden="true">${icon}</span> ${title}`;
+    block.appendChild(heading);
+
+    const p = document.createElement("p");
+    p.className = "mt-2 text-sm text-mist-300";
+    p.textContent = text;
+    block.appendChild(p);
+
+    legalFragment.appendChild(block);
+  });
+  legal.replaceChildren(legalFragment);
+}
+
+function renderFAQ() {
+  const container = document.getElementById("faq-list");
+  if (!container) return;
+
+  const fragment = document.createDocumentFragment();
+
+  faqItems.forEach((item, index) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "faq-item";
+    wrapper.dataset.open = "false";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "faq-question";
+    button.id = `faq-toggle-${index}`;
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", `faq-panel-${index}`);
+
+    const questionText = document.createElement("span");
+    questionText.textContent = item.question;
+    button.appendChild(questionText);
+
+    const icon = document.createElement("span");
+    icon.className = "faq-icon text-2xl leading-none";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "+";
+    button.appendChild(icon);
+
+    const panel = document.createElement("div");
+    panel.id = `faq-panel-${index}`;
+    panel.className = "px-5 pb-4 text-sm text-mist-300";
+    panel.setAttribute("role", "region");
+    panel.setAttribute("aria-labelledby", button.id);
+    panel.hidden = true;
+    panel.textContent = item.answer;
+
+    button.addEventListener("click", () => {
+      const isOpen = wrapper.dataset.open === "true";
+
+      container.querySelectorAll(".faq-item").forEach((otherItem) => {
+        otherItem.dataset.open = "false";
+        const otherButton = otherItem.querySelector(".faq-question");
+        const otherPanel = otherItem.querySelector("[role='region']");
+        otherButton.setAttribute("aria-expanded", "false");
+        otherPanel.hidden = true;
+      });
+
+      if (!isOpen) {
+        wrapper.dataset.open = "true";
+        button.setAttribute("aria-expanded", "true");
+        panel.hidden = false;
+      }
+    });
+
+    wrapper.appendChild(button);
+    wrapper.appendChild(panel);
+    fragment.appendChild(wrapper);
   });
 
   container.replaceChildren(fragment);
@@ -116,6 +236,8 @@ function setupFooterYear() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderMenu();
+  renderBusinessInfo();
+  renderFAQ();
   setupMobileNav();
   setupFooterYear();
 });
