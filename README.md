@@ -42,10 +42,10 @@ and each item looks like this:
   name: "Product Name",
   description: "Short one-line description.",
   price: "₹150",            // shown exactly as written — use whatever currency/format you like
-  image: null,               // set to a path like "images/my-photo.jpg" once you have real photos
-  emoji: "🎇"                 // shown as a placeholder visual when `image` is null
 }
 ```
+
+The price list is rendered as a table (grouped by category), not image cards.
 
 To add a new category, copy an existing category object (with its own unique `id`) and
 add it to the array. To add/remove/edit products, add/remove/edit objects inside an
