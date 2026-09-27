@@ -153,9 +153,24 @@ function renderMenu() {
       row.appendChild(descCell);
 
       const priceCell = document.createElement("td");
-      priceCell.textContent = item.price;
-      priceCell.className =
-        "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right font-bold text-spice-600";
+      priceCell.className = "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right";
+
+      const priceWrap = document.createElement("div");
+      priceWrap.className = "flex flex-col items-end";
+
+      const currentPrice = document.createElement("span");
+      currentPrice.className = "font-bold text-spice-600";
+      currentPrice.textContent = item.price;
+      priceWrap.appendChild(currentPrice);
+
+      if (item.originalPrice) {
+        const originalPrice = document.createElement("span");
+        originalPrice.className = "text-xs text-espresso-600/60 line-through";
+        originalPrice.textContent = item.originalPrice;
+        priceWrap.appendChild(originalPrice);
+      }
+
+      priceCell.appendChild(priceWrap);
       row.appendChild(priceCell);
 
       tbody.appendChild(row);

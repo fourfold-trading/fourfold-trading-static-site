@@ -43,9 +43,14 @@ and each item looks like this:
 {
   name: "Product Name",
   description: "Short one-line description.",
-  price: "₹150",            // shown exactly as written — use whatever currency/format you like
+  price: "₹150",              // the current (discounted) price — shown exactly as written
+  originalPrice: "₹300",      // optional: shown struck through next to the price, Amazon-style
 }
 ```
+
+Every product currently has an `originalPrice` (the catalog runs a site-wide 50% discount), but it's
+optional — omit it entirely on an item and only its `price` shows, with no strikethrough. There's no
+separate "discount percentage" setting; the site just displays whatever `price`/`originalPrice` you give it.
 
 The price list is rendered as a table (grouped by category), not image cards. Above it,
 a search box and "All" + per-category filter buttons are generated automatically from
