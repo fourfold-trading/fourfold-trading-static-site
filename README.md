@@ -90,9 +90,10 @@ Change the hex values there to adjust the whole site's palette consistently. Fon
 loaded from Google Fonts in `public/index.html` (`Poppins` for headings, `Inter` for body
 text) and mapped in `tailwind.config.js` under `theme.extend.fontFamily`.
 
-The business name, tagline, about text, contact details, and map embed in
-`public/index.html` are all placeholders — search for the placeholder address, phone,
-email, and WhatsApp link and replace them with real details.
+The business name, tagline, about text, and contact details in `public/index.html` are
+all placeholders — search for the placeholder address, phone, email, and WhatsApp link
+and replace them with real details. The hero image is a dashed-border placeholder box;
+swap it for a real `<img>` once you have product photos.
 
 ## Deployment (GitHub Pages via GitHub Actions)
 

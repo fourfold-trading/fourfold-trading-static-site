@@ -85,11 +85,14 @@
           </div>
 
           <div
-            class="flex aspect-square items-center justify-center rounded-3xl bg-spice-100 text-8xl shadow-inner sm:aspect-[4/3]"
+            class="flex aspect-square flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-spice-300 bg-spice-50 px-6 text-center sm:aspect-[4/3]"
             role="img"
-            aria-label="Placeholder hero image of fireworks and crackers"
+            aria-label="Placeholder for a hero photo — replace with a photo of your fireworks and crackers"
           >
-            🎆🎇✨
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-spice-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p class="text-sm font-medium text-spice-600">Hero photo placeholder — add your image here</p>
           </div>
         </div>
       </section>
@@ -132,57 +135,45 @@
             <h2 class="section-title mt-3">Contact Us</h2>
           </div>
 
-          <div class="grid gap-10 lg:grid-cols-2">
-            <address class="not-italic">
-              <ul class="space-y-4 text-espresso-700">
-                <li class="flex items-start gap-3">
-                  <span aria-hidden="true">📍</span>
-                  <span>123 Placeholder Street, Sample City, ST 00000</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span aria-hidden="true">📞</span>
-                  <a class="hover:text-spice-600" href="tel:+10000000000">+1 (000) 000-0000</a>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span aria-hidden="true">✉️</span>
-                  <a class="hover:text-spice-600" href="mailto:hello@example.com">hello@example.com</a>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span aria-hidden="true">💬</span>
-                  <a class="hover:text-spice-600" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
-                    Chat with us on WhatsApp
-                  </a>
-                </li>
-              </ul>
-
-              <div class="mt-6 flex gap-4" aria-label="Social media links">
-                <a
-                  href="#"
-                  class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
-                  aria-label="Follow us on Instagram"
-                >
-                  <span aria-hidden="true">📷</span>
+          <address class="mx-auto max-w-md not-italic">
+            <ul class="space-y-4 text-center text-espresso-700">
+              <li class="flex items-center justify-center gap-3">
+                <span aria-hidden="true">📍</span>
+                <span>123 Placeholder Street, Sample City, ST 00000</span>
+              </li>
+              <li class="flex items-center justify-center gap-3">
+                <span aria-hidden="true">📞</span>
+                <a class="hover:text-spice-600" href="tel:+10000000000">+1 (000) 000-0000</a>
+              </li>
+              <li class="flex items-center justify-center gap-3">
+                <span aria-hidden="true">✉️</span>
+                <a class="hover:text-spice-600" href="mailto:hello@example.com">hello@example.com</a>
+              </li>
+              <li class="flex items-center justify-center gap-3">
+                <span aria-hidden="true">💬</span>
+                <a class="hover:text-spice-600" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
+                  Chat with us on WhatsApp
                 </a>
-                <a
-                  href="#"
-                  class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
-                  aria-label="Follow us on Facebook"
-                >
-                  <span aria-hidden="true">📘</span>
-                </a>
-              </div>
-            </address>
+              </li>
+            </ul>
 
-            <div class="overflow-hidden rounded-2xl border border-spice-100 shadow-sm">
-              <iframe
-                title="Placeholder map location — replace with your business address"
-                src="https://www.google.com/maps?q=India&output=embed"
-                class="h-72 w-full sm:h-full sm:min-h-[280px]"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+            <div class="mt-6 flex justify-center gap-4" aria-label="Social media links">
+              <a
+                href="#"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
+                aria-label="Follow us on Instagram"
+              >
+                <span aria-hidden="true">📷</span>
+              </a>
+              <a
+                href="#"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
+                aria-label="Follow us on Facebook"
+              >
+                <span aria-hidden="true">📘</span>
+              </a>
             </div>
-          </div>
+          </address>
         </div>
       </section>
     </main>
