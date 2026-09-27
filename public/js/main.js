@@ -109,8 +109,7 @@ function buildInfoCard({ icon, title, lines }) {
 
 function renderBusinessInfo() {
   const grid = document.getElementById("business-info-grid");
-  const legal = document.getElementById("legal-callout");
-  if (!grid || !legal) return;
+  if (!grid) return;
 
   const cards = [
     businessInfo.deliveryAreas,
@@ -123,25 +122,6 @@ function renderBusinessInfo() {
   const gridFragment = document.createDocumentFragment();
   cards.forEach((data) => gridFragment.appendChild(buildInfoCard(data)));
   grid.replaceChildren(gridFragment);
-
-  const legalFragment = document.createDocumentFragment();
-  [businessInfo.license, businessInfo.ageRestriction].forEach(({ icon, title, text }, index) => {
-    const block = document.createElement("div");
-    block.className = index === 0 ? "pb-5 mb-5 border-b border-spice-200" : "";
-
-    const heading = document.createElement("h3");
-    heading.className = "flex items-center gap-2 text-base font-semibold text-espresso-800";
-    heading.innerHTML = `<span aria-hidden="true">${icon}</span> ${title}`;
-    block.appendChild(heading);
-
-    const p = document.createElement("p");
-    p.className = "mt-2 text-sm text-espresso-600";
-    p.textContent = text;
-    block.appendChild(p);
-
-    legalFragment.appendChild(block);
-  });
-  legal.replaceChildren(legalFragment);
 }
 
 function renderFAQ() {
