@@ -57,7 +57,7 @@ file needs to change.
 All current names, descriptions, and prices are **placeholders**. Replace them with the
 real catalog whenever it's ready.
 
-## Updating business info (delivery, ordering, hours, license, age restriction)
+## Updating business info (delivery, ordering, hours)
 
 The **Ordering, Delivery & Policies** section (`#info`) is generated from:
 
@@ -66,10 +66,8 @@ public/js/business-info-data.js
 ```
 
 It exports one `businessInfo` object with a fixed set of keys (`deliveryAreas`,
-`howToOrder`, `orderPolicy`, `paymentMethods`, `hours`, `license`, `ageRestriction`).
-Each is `{ icon, title, lines/text }` — edit the `lines` (or `text`) to update what's
-shown; the `license` and `ageRestriction` entries render in a distinct bordered callout
-box rather than the regular card grid, since they're safety/legal notices.
+`howToOrder`, `orderPolicy`, `paymentMethods`, `hours`). Each is `{ icon, title, lines }`
+— edit the `lines` to update what's shown; each key renders as one card in the grid.
 
 ## Updating the FAQ
 
@@ -117,15 +115,18 @@ The color palette is a warm cream/terracotta theme defined in `tailwind.config.j
 accent/CTAs/prices), `turmeric` (secondary accent), and `espresso` (ink/text). Change the
 hex values there to adjust the whole site's palette consistently. The hero section also
 has a few hero-only accent classes in `src/input.css` (`.hero-badge`, `.hero-glow`,
-`.hero-btn-glow`, `.safety-strip`) that reuse the same `spice` tones — they're not used
+`.hero-btn-glow`, `.firework-burst`) that reuse the same `spice` tones — they're not used
 elsewhere on the site. Fonts are loaded from Google Fonts in `public/index.html`
 (`Poppins` for headings, `Inter` for body text) and mapped in `tailwind.config.js` under
 `theme.extend.fontFamily`.
 
 The business name, tagline, about text, and contact details in `public/index.html` are
 all placeholders — search for the placeholder address, phone, email, and WhatsApp link
-and replace them with real details. The hero image is a dashed-border placeholder box;
-swap it for a real `<img>` once you have product photos.
+and replace them with real details. The hero background is an animated CSS/SVG firework
+graphic (three looping `.firework-burst` instances defined inline in `public/index.html`,
+animated via `@keyframes firework-burst` in `src/input.css`, and respecting
+`prefers-reduced-motion`) — there's no photo to swap in unless you want to replace it
+with one.
 
 ## Deployment (GitHub Pages via GitHub Actions)
 

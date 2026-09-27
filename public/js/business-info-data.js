@@ -2,8 +2,8 @@
 // BUSINESS INFO DATA
 // ---------------------------------------------------------------------------
 // Edit ONLY this file to update the "Business Info" section shown on the
-// website (delivery areas, ordering process, payment methods, hours,
-// license, and age-restriction notice). The layout never needs to change.
+// website (delivery areas, ordering process, payment methods, hours). The
+// layout never needs to change.
 //
 // All values below are PLACEHOLDERS — replace with your real details
 // whenever they're ready. No other file needs to change.
@@ -46,15 +46,5 @@ export const businessInfo = {
       "Mon–Sat: 10:00 AM – 8:00 PM · Sun: 10:00 AM – 2:00 PM (placeholder)",
       "Note: We are open year-round for enquiries, with extended hours during the Diwali season.",
     ],
-  },
-  license: {
-    icon: "📜",
-    title: "License & Registration",
-    text: "Explosives/Fireworks License No.: PLACEHOLDER-0000-0000. Issued by [Placeholder Licensing Authority]. Valid through [Placeholder Date].",
-  },
-  ageRestriction: {
-    icon: "🔞",
-    title: "Age Restriction",
-    text: "Fireworks and crackers are sold only to customers aged 18 years and above (or as required by local law). Valid ID may be requested at the time of purchase or delivery.",
   },
 };

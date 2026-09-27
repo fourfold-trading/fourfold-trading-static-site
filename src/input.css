@@ -52,10 +52,6 @@
     @apply flex flex-col gap-2 rounded-2xl border border-spice-100 bg-white p-6 shadow-sm;
   }
 
-  .legal-callout {
-    @apply rounded-2xl border-2 border-spice-600 bg-spice-50 p-6;
-  }
-
   .faq-item {
     @apply overflow-hidden rounded-2xl border border-spice-100 bg-white shadow-sm;
   }
@@ -83,10 +79,6 @@
 
   .hero-btn-glow {
     @apply transition-shadow hover:shadow-lg hover:shadow-spice-500/40;
-  }
-
-  .safety-strip {
-    @apply flex items-center gap-2 rounded-xl border border-spice-100 bg-spice-50 px-4 py-3 text-sm text-espresso-700 transition-colors hover:border-spice-300 hover:bg-spice-100;
   }
 
   /* Hero background firework animation — CSS-only, no JS */
