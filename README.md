@@ -112,13 +112,15 @@ python3 -m http.server --directory public 8080
 
 ## Customizing colors / branding
 
-The color palette is a dark, festive fireworks theme defined in `tailwind.config.js`
-under `theme.extend.colors`: `night` (background layers), `mist` (light text on dark
-backgrounds), `gold` (primary accent/CTAs/prices), and `ember` (secondary accent/legal
-callout). Change the hex values there to adjust the whole site's palette consistently —
-all combinations were chosen to keep text contrast at WCAG AA or better. Fonts are
-loaded from Google Fonts in `public/index.html` (`Poppins` for headings, `Inter` for body
-text) and mapped in `tailwind.config.js` under `theme.extend.fontFamily`.
+The color palette is a warm cream/terracotta theme defined in `tailwind.config.js` under
+`theme.extend.colors`: `cream` (page background), `spice` (terracotta — primary
+accent/CTAs/prices), `turmeric` (secondary accent), and `espresso` (ink/text). Change the
+hex values there to adjust the whole site's palette consistently. The hero section also
+has a few hero-only accent classes in `src/input.css` (`.hero-badge`, `.hero-glow`,
+`.hero-btn-glow`, `.safety-strip`) that reuse the same `spice` tones — they're not used
+elsewhere on the site. Fonts are loaded from Google Fonts in `public/index.html`
+(`Poppins` for headings, `Inter` for body text) and mapped in `tailwind.config.js` under
+`theme.extend.fontFamily`.
 
 The business name, tagline, about text, and contact details in `public/index.html` are
 all placeholders — search for the placeholder address, phone, email, and WhatsApp link

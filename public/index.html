@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0F0A24" />
     <title>Fourfold Crackers | Fireworks &amp; Crackers for Every Festival</title>
     <meta
       name="description"
@@ -28,9 +27,9 @@
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Header / Nav -->
-    <header class="sticky top-0 z-40 border-b border-white/10 bg-night-900/95 backdrop-blur">
+    <header class="sticky top-0 z-40 border-b border-spice-100 bg-cream-50/95 backdrop-blur">
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Primary">
-        <a href="#top" class="flex items-center gap-2 font-display text-xl font-bold text-mist-50">
+        <a href="#top" class="flex items-center gap-2 font-display text-xl font-bold text-espresso-800">
           <span aria-hidden="true">🎆</span>
           <span>Fourfold Crackers</span>
         </a>
@@ -48,7 +47,7 @@
         <button
           id="nav-toggle"
           type="button"
-          class="inline-flex items-center justify-center rounded-md p-2 text-mist-100 md:hidden"
+          class="inline-flex items-center justify-center rounded-md p-2 text-espresso-700 md:hidden"
           aria-expanded="false"
           aria-controls="mobile-menu"
           aria-label="Toggle navigation menu"
@@ -59,7 +58,7 @@
         </button>
       </nav>
 
-      <div id="mobile-menu" class="hidden border-t border-white/10 md:hidden">
+      <div id="mobile-menu" class="hidden border-t border-spice-100 md:hidden">
         <ul class="flex flex-col gap-1 px-4 py-3">
           <li><a class="block rounded-lg px-3 py-2 nav-link" href="#about">About</a></li>
           <li><a class="block rounded-lg px-3 py-2 nav-link" href="#menu">Price List</a></li>
@@ -72,39 +71,144 @@
 
     <main id="main">
       <!-- Hero -->
-      <section id="top" class="relative overflow-hidden bg-night-900">
-        <div class="glow-blob -left-24 -top-24 h-72 w-72 bg-ember-500/25" aria-hidden="true"></div>
-        <div class="glow-blob -bottom-32 -right-16 h-96 w-96 bg-gold-500/20" aria-hidden="true"></div>
-        <span class="spark h-2 w-2" style="top: 18%; left: 12%; animation-delay: 0s" aria-hidden="true"></span>
-        <span class="spark h-1.5 w-1.5" style="top: 32%; left: 85%; animation-delay: 0.8s" aria-hidden="true"></span>
-        <span class="spark h-1 w-1" style="top: 70%; left: 22%; animation-delay: 1.5s" aria-hidden="true"></span>
-        <span class="spark h-1.5 w-1.5" style="top: 58%; left: 92%; animation-delay: 2.2s" aria-hidden="true"></span>
+      <section id="top" class="relative overflow-hidden bg-cream-50">
+        <div class="hero-glow -right-20 -top-20 h-80 w-80" aria-hidden="true"></div>
 
-        <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2">
-          <div>
-            <p class="section-eyebrow">Diwali &amp; Festival Specials</p>
+        <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <!-- Large burst, top-right -->
+          <svg
+            viewBox="0 0 200 200"
+            class="absolute -right-10 -top-8 h-[360px] w-[360px] opacity-[0.15] sm:-right-14 sm:-top-12 sm:h-[500px] sm:w-[500px] sm:opacity-20 lg:h-[600px] lg:w-[600px]"
+          >
+            <g class="firework-burst" style="animation-delay: 0s">
+              <circle cx="100" cy="100" r="40" fill="#C1622D" opacity="0.08" />
+              <circle cx="100" cy="100" r="25" fill="#C1622D" opacity="0.18" />
+
+              <line x1="128.0" y1="100.0" x2="182.0" y2="100.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="124.2" y1="114.0" x2="147.6" y2="127.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="114.0" y1="124.2" x2="141.0" y2="171.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="100.0" y1="128.0" x2="100.0" y2="155.0" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="86.0" y1="124.2" x2="59.0" y2="171.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="75.8" y1="114.0" x2="52.4" y2="127.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="72.0" y1="100.0" x2="18.0" y2="100.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="75.8" y1="86.0" x2="52.4" y2="72.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="86.0" y1="75.8" x2="59.0" y2="29.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="100.0" y1="72.0" x2="100.0" y2="45.0" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="114.0" y1="75.8" x2="141.0" y2="29.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="124.2" y1="86.0" x2="147.6" y2="72.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+
+              <circle cx="185.0" cy="122.8" r="3" fill="#E39A6B" opacity="0.6" />
+              <circle cx="156.2" cy="180.3" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="90.6" cy="207.6" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="32.6" cy="156.6" r="3" fill="#E39A6B" opacity="0.4" />
+              <circle cx="2.4" cy="108.5" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="2.1" cy="54.4" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="69.9" cy="17.3" r="3" fill="#E39A6B" opacity="0.6" />
+              <circle cx="133.5" cy="7.9" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="182.7" cy="30.6" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="185.0" cy="77.2" r="3" fill="#E39A6B" opacity="0.4" />
+
+              <circle cx="100" cy="100" r="10" fill="#E39A6B" />
+              <circle cx="100" cy="100" r="6" fill="#FDF1EB" />
+            </g>
+          </svg>
+
+          <!-- Medium burst, bottom-right -->
+          <svg
+            viewBox="0 0 200 200"
+            class="absolute -right-6 bottom-4 h-[220px] w-[220px] opacity-[0.12] sm:h-[300px] sm:w-[300px] sm:opacity-[0.18]"
+          >
+            <g class="firework-burst" style="animation-delay: 1.4s">
+              <circle cx="100" cy="100" r="40" fill="#C1622D" opacity="0.08" />
+              <circle cx="100" cy="100" r="25" fill="#C1622D" opacity="0.18" />
+
+              <line x1="128.0" y1="100.0" x2="182.0" y2="100.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="124.2" y1="114.0" x2="147.6" y2="127.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="114.0" y1="124.2" x2="141.0" y2="171.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="100.0" y1="128.0" x2="100.0" y2="155.0" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="86.0" y1="124.2" x2="59.0" y2="171.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="75.8" y1="114.0" x2="52.4" y2="127.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="72.0" y1="100.0" x2="18.0" y2="100.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="75.8" y1="86.0" x2="52.4" y2="72.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="86.0" y1="75.8" x2="59.0" y2="29.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="100.0" y1="72.0" x2="100.0" y2="45.0" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="114.0" y1="75.8" x2="141.0" y2="29.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="124.2" y1="86.0" x2="147.6" y2="72.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+
+              <circle cx="185.0" cy="122.8" r="3" fill="#E39A6B" opacity="0.6" />
+              <circle cx="156.2" cy="180.3" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="90.6" cy="207.6" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="32.6" cy="156.6" r="3" fill="#E39A6B" opacity="0.4" />
+              <circle cx="2.4" cy="108.5" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="2.1" cy="54.4" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="69.9" cy="17.3" r="3" fill="#E39A6B" opacity="0.6" />
+              <circle cx="133.5" cy="7.9" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="182.7" cy="30.6" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="185.0" cy="77.2" r="3" fill="#E39A6B" opacity="0.4" />
+
+              <circle cx="100" cy="100" r="10" fill="#E39A6B" />
+              <circle cx="100" cy="100" r="6" fill="#FDF1EB" />
+            </g>
+          </svg>
+
+          <!-- Small accent burst, upper-mid-right (desktop/tablet only, keeps mobile lighter) -->
+          <svg
+            viewBox="0 0 200 200"
+            class="absolute right-[26%] top-[10%] hidden h-[160px] w-[160px] opacity-[0.14] sm:block"
+          >
+            <g class="firework-burst" style="animation-delay: 2.6s">
+              <circle cx="100" cy="100" r="40" fill="#C1622D" opacity="0.08" />
+              <circle cx="100" cy="100" r="25" fill="#C1622D" opacity="0.18" />
+
+              <line x1="128.0" y1="100.0" x2="182.0" y2="100.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="124.2" y1="114.0" x2="147.6" y2="127.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="114.0" y1="124.2" x2="141.0" y2="171.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="100.0" y1="128.0" x2="100.0" y2="155.0" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="86.0" y1="124.2" x2="59.0" y2="171.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="75.8" y1="114.0" x2="52.4" y2="127.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="72.0" y1="100.0" x2="18.0" y2="100.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="75.8" y1="86.0" x2="52.4" y2="72.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="86.0" y1="75.8" x2="59.0" y2="29.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="100.0" y1="72.0" x2="100.0" y2="45.0" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+              <line x1="114.0" y1="75.8" x2="141.0" y2="29.0" stroke="#C1622D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+              <line x1="124.2" y1="86.0" x2="147.6" y2="72.5" stroke="#C1622D" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
+
+              <circle cx="185.0" cy="122.8" r="3" fill="#E39A6B" opacity="0.6" />
+              <circle cx="156.2" cy="180.3" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="90.6" cy="207.6" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="32.6" cy="156.6" r="3" fill="#E39A6B" opacity="0.4" />
+              <circle cx="2.4" cy="108.5" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="2.1" cy="54.4" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="69.9" cy="17.3" r="3" fill="#E39A6B" opacity="0.6" />
+              <circle cx="133.5" cy="7.9" r="2" fill="#E39A6B" opacity="0.4" />
+              <circle cx="182.7" cy="30.6" r="2" fill="#E39A6B" opacity="0.6" />
+              <circle cx="185.0" cy="77.2" r="3" fill="#E39A6B" opacity="0.4" />
+
+              <circle cx="100" cy="100" r="10" fill="#E39A6B" />
+              <circle cx="100" cy="100" r="6" fill="#FDF1EB" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+          <div class="max-w-xl">
+            <p class="hero-badge">Diwali &amp; Festival Specials</p>
             <h1 class="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">
               Fourfold Crackers
             </h1>
-            <p class="mt-4 max-w-md text-lg text-mist-300">
+            <p class="mt-4 max-w-md text-lg text-espresso-600">
               Light up every celebration with our range of sparklers, chakkars, aerial fireworks and gift boxes —
               trusted quality for Diwali and every festival.
             </p>
             <div class="mt-8 flex flex-wrap gap-4">
-              <a href="#menu" class="btn-primary">View Price List</a>
+              <a href="#menu" class="btn-primary hero-btn-glow">View Price List</a>
               <a href="#contact" class="btn-secondary">Contact Us</a>
             </div>
-          </div>
 
-          <div
-            class="flex aspect-square flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-gold-400/40 bg-night-800 px-6 text-center sm:aspect-[4/3]"
-            role="img"
-            aria-label="Placeholder for a hero photo — replace with a photo of your fireworks and crackers"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gold-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <p class="text-sm font-medium text-mist-300">Hero photo placeholder — add your image here</p>
+            <a href="#info" class="safety-strip mt-6 max-w-md">
+              <span aria-hidden="true">🔞</span>
+              <span>18+ only. Licensed retailer. Use under adult supervision.</span>
+            </a>
           </div>
         </div>
       </section>
@@ -113,7 +217,7 @@
       <section id="about" class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
         <p class="section-eyebrow">Our Story</p>
         <h2 class="section-title mt-3">About Fourfold Crackers</h2>
-        <p class="mt-6 text-lg leading-relaxed text-mist-300">
+        <p class="mt-6 text-lg leading-relaxed text-espresso-600">
           Placeholder text: Fourfold Crackers has been supplying quality fireworks and crackers for Diwali and
           festive celebrations for years. From sparklers to grand aerial displays, every product is sourced for
           safety, brightness, and value. We believe every festival deserves to shine.
@@ -121,19 +225,19 @@
       </section>
 
       <!-- Menu / Price List -->
-      <section id="menu" class="bg-night-800/60 px-4 py-16 sm:px-6">
+      <section id="menu" class="bg-spice-50/60 px-4 py-16 sm:px-6">
         <div class="mx-auto max-w-6xl">
           <div class="mb-12 text-center">
             <p class="section-eyebrow">Diwali &amp; Festival Range</p>
             <h2 class="section-title mt-3">Our Price List</h2>
-            <p class="mt-4 text-mist-300">
+            <p class="mt-4 text-espresso-600">
               Products and prices below are placeholders — the real catalog will be added soon.
             </p>
           </div>
 
           <div id="price-list"></div>
 
-          <p class="mt-12 text-center text-sm text-mist-400">
+          <p class="mt-12 text-center text-sm text-espresso-600">
             🎇 Please use fireworks responsibly and follow all local safety guidelines and regulations.
           </p>
         </div>
@@ -145,7 +249,7 @@
           <div class="mb-12 text-center">
             <p class="section-eyebrow">Good To Know</p>
             <h2 class="section-title mt-3">Ordering, Delivery &amp; Policies</h2>
-            <p class="mt-4 text-mist-300">
+            <p class="mt-4 text-espresso-600">
               Everything you need to know before placing an order.
             </p>
           </div>
@@ -157,7 +261,7 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="bg-night-800/60 px-4 py-16 sm:px-6">
+      <section id="faq" class="bg-spice-50/60 px-4 py-16 sm:px-6">
         <div class="mx-auto max-w-3xl">
           <div class="mb-12 text-center">
             <p class="section-eyebrow">Have Questions?</p>
@@ -177,22 +281,22 @@
           </div>
 
           <address class="mx-auto max-w-md not-italic">
-            <ul class="space-y-4 text-center text-mist-300">
+            <ul class="space-y-4 text-center text-espresso-700">
               <li class="flex items-center justify-center gap-3">
                 <span aria-hidden="true">📍</span>
                 <span>123 Placeholder Street, Sample City, ST 00000</span>
               </li>
               <li class="flex items-center justify-center gap-3">
                 <span aria-hidden="true">📞</span>
-                <a class="hover:text-gold-400" href="tel:+10000000000">+1 (000) 000-0000</a>
+                <a class="hover:text-spice-600" href="tel:+10000000000">+1 (000) 000-0000</a>
               </li>
               <li class="flex items-center justify-center gap-3">
                 <span aria-hidden="true">✉️</span>
-                <a class="hover:text-gold-400" href="mailto:hello@example.com">hello@example.com</a>
+                <a class="hover:text-spice-600" href="mailto:hello@example.com">hello@example.com</a>
               </li>
               <li class="flex items-center justify-center gap-3">
                 <span aria-hidden="true">💬</span>
-                <a class="hover:text-gold-400" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
+                <a class="hover:text-spice-600" href="https://wa.me/10000000000" target="_blank" rel="noopener noreferrer">
                   Chat with us on WhatsApp
                 </a>
               </li>
@@ -201,14 +305,14 @@
             <div class="mt-6 flex justify-center gap-4" aria-label="Social media links">
               <a
                 href="#"
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg text-gold-300 transition-colors hover:bg-white/20"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
                 aria-label="Follow us on Instagram"
               >
                 <span aria-hidden="true">📷</span>
               </a>
               <a
                 href="#"
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-lg text-gold-300 transition-colors hover:bg-white/20"
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-spice-100 text-lg text-spice-600 transition-colors hover:bg-spice-200"
                 aria-label="Follow us on Facebook"
               >
                 <span aria-hidden="true">📘</span>
@@ -220,19 +324,19 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 bg-night-950 text-mist-400">
+    <footer class="border-t border-spice-100 bg-espresso-800 text-cream-100">
       <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center sm:flex-row sm:justify-between sm:px-6">
         <p class="text-sm">
           &copy; <span id="year">2026</span> Fourfold Crackers. All rights reserved.
         </p>
         <div class="flex gap-4" aria-label="Social media links">
-          <a href="#" class="text-mist-400 hover:text-gold-400" aria-label="Follow us on Instagram">
+          <a href="#" class="text-cream-100/80 hover:text-cream-100" aria-label="Follow us on Instagram">
             <span aria-hidden="true">📷</span>
           </a>
-          <a href="#" class="text-mist-400 hover:text-gold-400" aria-label="Follow us on Facebook">
+          <a href="#" class="text-cream-100/80 hover:text-cream-100" aria-label="Follow us on Facebook">
             <span aria-hidden="true">📘</span>
           </a>
-          <a href="#" class="text-mist-400 hover:text-gold-400" aria-label="Chat with us on WhatsApp">
+          <a href="#" class="text-cream-100/80 hover:text-cream-100" aria-label="Chat with us on WhatsApp">
             <span aria-hidden="true">💬</span>
           </a>
         </div>

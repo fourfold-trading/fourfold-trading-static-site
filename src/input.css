@@ -8,32 +8,32 @@
   }
 
   body {
-    @apply bg-night-900 text-mist-300 font-body antialiased;
+    @apply bg-cream-50 text-espresso-700 font-body antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display text-mist-50;
+    @apply font-display text-espresso-800;
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-gold-400 ring-offset-2 ring-offset-night-900;
+    @apply outline-none ring-2 ring-spice-500 ring-offset-2 ring-offset-cream-50;
   }
 }
 
 @layer components {
   .nav-link {
-    @apply text-mist-300 hover:text-gold-400 font-medium transition-colors;
+    @apply text-espresso-600 hover:text-spice-600 font-medium transition-colors;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-3 font-display font-semibold text-night-900 shadow-sm shadow-gold-500/20 transition-colors hover:bg-gold-400;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-spice-500 px-6 py-3 font-display font-semibold text-cream-50 shadow-sm transition-colors hover:bg-spice-600;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold-400 px-6 py-3 font-display font-semibold text-gold-300 transition-colors hover:bg-gold-400/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-spice-500 px-6 py-3 font-display font-semibold text-spice-600 transition-colors hover:bg-spice-50;
   }
 
   .section-title {
@@ -41,64 +41,83 @@
   }
 
   .section-eyebrow {
-    @apply text-sm font-semibold uppercase tracking-widest text-gold-400;
+    @apply text-sm font-semibold uppercase tracking-widest text-spice-600;
   }
 
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-gold-500 focus:px-4 focus:py-2 focus:text-night-900;
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-spice-600 focus:px-4 focus:py-2 focus:text-cream-50;
   }
 
   .info-card {
-    @apply flex flex-col gap-2 rounded-2xl border border-white/10 bg-night-800 p-6;
+    @apply flex flex-col gap-2 rounded-2xl border border-spice-100 bg-white p-6 shadow-sm;
   }
 
   .legal-callout {
-    @apply rounded-2xl border-2 border-ember-500/60 bg-ember-900/40 p-6;
+    @apply rounded-2xl border-2 border-spice-600 bg-spice-50 p-6;
   }
 
   .faq-item {
-    @apply overflow-hidden rounded-2xl border border-white/10 bg-night-800;
+    @apply overflow-hidden rounded-2xl border border-spice-100 bg-white shadow-sm;
   }
 
   .faq-question {
-    @apply flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-display font-semibold text-mist-100 transition-colors hover:text-gold-300;
+    @apply flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-display font-semibold text-espresso-800 transition-colors hover:text-spice-600;
   }
 
   .faq-icon {
-    @apply flex-shrink-0 text-gold-400 transition-transform duration-200;
+    @apply flex-shrink-0 text-spice-600 transition-transform duration-200;
   }
 
   .faq-item[data-open="true"] .faq-icon {
     transform: rotate(45deg);
   }
 
-  /* Decorative sparkle accents — CSS-only, no JS, respects reduced-motion */
-  .spark {
-    @apply pointer-events-none absolute rounded-full bg-gold-300;
-    box-shadow: 0 0 12px 2px rgba(251, 191, 36, 0.8);
-    animation: twinkle 3s ease-in-out infinite;
+  /* Hero-only accents (do not reuse elsewhere) */
+  .hero-badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-spice-100 bg-spice-50 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-spice-600;
   }
 
-  .glow-blob {
-    @apply pointer-events-none absolute rounded-full blur-3xl;
+  .hero-glow {
+    @apply pointer-events-none absolute rounded-full bg-spice-500/10 blur-3xl;
+  }
+
+  .hero-btn-glow {
+    @apply transition-shadow hover:shadow-lg hover:shadow-spice-500/40;
+  }
+
+  .safety-strip {
+    @apply flex items-center gap-2 rounded-xl border border-spice-100 bg-spice-50 px-4 py-3 text-sm text-espresso-700 transition-colors hover:border-spice-300 hover:bg-spice-100;
+  }
+
+  /* Hero background firework animation — CSS-only, no JS */
+  .firework-burst {
+    transform-origin: 100px 100px;
+    animation: firework-burst 4s ease-out infinite;
   }
 }
 
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-    transform: scale(0.8);
+@keyframes firework-burst {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
   }
-  50% {
+  15% {
     opacity: 1;
-    transform: scale(1.15);
+  }
+  55% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spark {
+  .firework-burst {
     animation: none;
-    opacity: 0.7;
+    opacity: 0.6;
+    transform: scale(0.9);
   }
 }
