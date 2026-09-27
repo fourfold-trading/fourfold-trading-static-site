@@ -88,4 +88,36 @@
   .safety-strip {
     @apply flex items-center gap-2 rounded-xl border border-spice-100 bg-spice-50 px-4 py-3 text-sm text-espresso-700 transition-colors hover:border-spice-300 hover:bg-spice-100;
   }
+
+  /* Hero background firework animation — CSS-only, no JS */
+  .firework-burst {
+    transform-origin: 100px 100px;
+    animation: firework-burst 4s ease-out infinite;
+  }
+}
+
+@keyframes firework-burst {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  55% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firework-burst {
+    animation: none;
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
 }
