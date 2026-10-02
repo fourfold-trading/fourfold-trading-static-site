@@ -208,7 +208,7 @@ function renderMenu() {
       priceCell.className = "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right";
 
       const priceRow = document.createElement("div");
-      priceRow.className = "flex items-center justify-end gap-3";
+      priceRow.className = "flex items-center justify-end gap-1.5";
 
       const stepper = document.createElement("div");
       stepper.className = "qty-stepper";
