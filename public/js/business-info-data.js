@@ -19,11 +19,11 @@ export const businessInfo = {
     ],
   },
   howToOrder: {
-    icon: "📞",
+    icon: "🛒",
     title: "How To Order",
     lines: [
-      "We don't have online checkout — please call or WhatsApp us with your order list.",
-      "We'll confirm availability, total price, and delivery/pickup details directly with you.",
+      "Browse our price list and build your order using the quantity selector on each item, then tap Checkout to review it.",
+      "Download it as a PDF for your records, or send it to us directly via WhatsApp — we'll confirm availability, final price, and delivery/pickup details with you there.",
     ],
   },
   orderPolicy: {
