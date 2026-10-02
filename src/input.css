@@ -73,7 +73,7 @@
   }
 
   .qty-btn {
-    @apply flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-base font-bold leading-none text-spice-600 transition-colors hover:bg-spice-50;
+    @apply flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-base font-bold leading-none text-spice-600 transition-colors hover:bg-spice-100 active:bg-spice-100;
   }
 
   .cart-summary-bar {

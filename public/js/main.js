@@ -191,24 +191,12 @@ function renderMenu() {
       const nameCell = document.createElement("th");
       nameCell.scope = "row";
       nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-espresso-800";
-
-      const nameLabel = document.createElement("label");
-      nameLabel.className = "flex cursor-pointer items-start gap-3";
-
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.className = "order-checkbox mt-1 h-4 w-4 flex-shrink-0 cursor-pointer accent-spice-500";
-
-      const nameTextWrap = document.createElement("span");
-      nameTextWrap.append(item.name);
+      nameCell.append(item.name);
 
       const mobileDesc = document.createElement("span");
       mobileDesc.className = "mt-1 block text-xs font-normal text-espresso-600 sm:hidden";
       mobileDesc.textContent = item.description;
-      nameTextWrap.appendChild(mobileDesc);
-
-      nameLabel.append(checkbox, nameTextWrap);
-      nameCell.appendChild(nameLabel);
+      nameCell.appendChild(mobileDesc);
       row.appendChild(nameCell);
 
       const descCell = document.createElement("td");
@@ -265,7 +253,6 @@ function renderMenu() {
 
       function syncRow() {
         const qty = cart.get(item.name)?.qty ?? 0;
-        checkbox.checked = qty > 0;
         qtyDisplay.textContent = String(qty);
       }
 
@@ -280,9 +267,6 @@ function renderMenu() {
         renderCartSummary();
       }
 
-      checkbox.addEventListener("change", () => {
-        updateQty(checkbox.checked ? Math.max(1, cart.get(item.name)?.qty ?? 1) : 0);
-      });
       minusBtn.addEventListener("click", () => updateQty((cart.get(item.name)?.qty ?? 0) - 1));
       plusBtn.addEventListener("click", () => updateQty((cart.get(item.name)?.qty ?? 0) + 1));
 

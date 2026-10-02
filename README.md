@@ -58,8 +58,9 @@ this same data — there's nothing to configure, the category buttons always mat
 whatever categories exist in `menuCategories`. Search matches product names
 (case-insensitive) within whichever category is currently selected.
 
-Each row has a checkbox and a quantity stepper so visitors can build an order list as they
-browse — there's no checkout, this is purely to help them total up what they want before
+Each row has a `−`/`+` quantity stepper so visitors can build an order list as they
+browse — a product is "selected" simply by having a quantity above 0, no separate checkbox.
+There's no checkout, this is purely to help them total up what they want before
 calling or WhatsApp-ing it in. Selections persist in memory (not saved across a page
 reload) regardless of search/filter changes, and a summary bar at the bottom of the page
 shows the running item count and total, with a "Clear" button to reset. This is all in
