@@ -88,6 +88,14 @@
     @apply bg-espresso-800/60;
   }
 
+  .checkout-modal[data-stage="confirmation"] #checkout-review {
+    @apply hidden;
+  }
+
+  .checkout-modal[data-stage="confirmation"] #checkout-confirmation {
+    @apply flex;
+  }
+
   /* Hero-only accents (do not reuse elsewhere) */
   .hero-badge {
     @apply inline-flex items-center gap-2 rounded-full border border-spice-100 bg-spice-50 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-spice-600;
@@ -131,37 +139,5 @@
     animation: none;
     opacity: 0.6;
     transform: scale(0.9);
-  }
-}
-
-/* Printing the checkout modal (Print / Save as PDF) — hide everything else */
-@media print {
-  body {
-    background: #fff !important;
-  }
-
-  body > *:not(dialog[open]) {
-    display: none !important;
-  }
-
-  .checkout-modal {
-    position: static !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    box-shadow: none !important;
-  }
-
-  .checkout-modal::backdrop {
-    display: none !important;
-  }
-
-  #checkout-items {
-    flex: none !important;
-    overflow: visible !important;
-  }
-
-  .no-print {
-    display: none !important;
   }
 }

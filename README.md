@@ -68,15 +68,23 @@ and the functions around it) — no data file changes needed for it.
 There's still no real checkout (no payment, no backend) — tapping **Checkout** on the
 summary bar opens a review modal (`<dialog id="checkout-modal">`) listing the selected
 items with a total, and two actions:
-- **Print / Save as PDF** calls the browser's native `window.print()`; a print-only
-  stylesheet in `src/input.css` (the `@media print` block) hides everything on the page
-  except the modal's contents, so "Save as PDF" in the system print dialog produces a
-  clean one-page order summary. No PDF library involved.
+- **Download PDF** generates a one-click `.pdf` of the order summary client-side using
+  [jsPDF](https://github.com/parallax/jsPDF) (its UMD build is vendored into
+  `public/js/vendor/jspdf.umd.min.js` by `npm run copy:vendor`, which runs automatically
+  via `postinstall` and as part of `npm run build`/`npm run dev` — see
+  `downloadOrderPdf()` in `public/js/main.js`). jsPDF's built-in fonts don't include the
+  ₹ glyph, so the PDF renders prices as "Rs. 1,234" instead of "₹1,234" (on-page prices
+  are unaffected).
 - **Send via WhatsApp** opens a `wa.me` link with the order list and total pre-filled as
   the message text, addressed to the first contact number in `public/index.html`'s
   Contact section. The customer still has to tap Send inside WhatsApp themselves —
   there's no way to auto-send a WhatsApp message from a webpage, and that's by design
-  (WhatsApp's own policy, not a limitation of this site).
+  (WhatsApp's own policy, not a limitation of this site). Since the page can't detect
+  whether the customer actually sent that WhatsApp message, clicking the button itself
+  is treated as "order placed": the modal swaps to a confirmation panel ("Order sent to
+  WhatsApp! Please tap Send there to reach us — we'll get in touch soon.") and the cart
+  is cleared, matching typical e-commerce post-order behavior. Reopening Checkout after
+  that (with a freshly built cart) starts back at the review panel.
 
 To add a new category, copy an existing category object (with its own unique `id`) and
 add it to the array. To add/remove/edit products, add/remove/edit objects inside an

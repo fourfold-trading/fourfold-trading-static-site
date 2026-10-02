@@ -113,32 +113,98 @@ function buildWhatsAppMessage() {
   return `Hi Fourfold Crackers! I'd like to order:\n\n${itemLines}\n\nTotal: ${formatPrice(total)}`;
 }
 
+// jsPDF's built-in fonts don't have the ₹ glyph, so PDF text uses "Rs." instead.
+function formatPricePdf(amount) {
+  return "Rs. " + amount.toLocaleString("en-IN");
+}
+
+function downloadOrderPdf() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const lines = getCartLines();
+  const { total } = getCartTotals();
+
+  let y = 20;
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(16);
+  doc.text("Fourfold Crackers — Order Summary", 14, y);
+
+  y += 8;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.text(new Date().toLocaleDateString("en-IN"), 14, y);
+
+  y += 10;
+  doc.setFont("helvetica", "bold");
+  doc.text("Product", 14, y);
+  doc.text("Qty", 125, y);
+  doc.text("Price", 148, y);
+  doc.text("Total", 175, y);
+  y += 2;
+  doc.line(14, y, 196, y);
+  y += 7;
+
+  doc.setFont("helvetica", "normal");
+  lines.forEach((line) => {
+    if (y > 270) {
+      doc.addPage();
+      y = 20;
+    }
+    doc.text(line.name, 14, y, { maxWidth: 105 });
+    doc.text(String(line.qty), 125, y);
+    doc.text(formatPricePdf(line.price), 148, y);
+    doc.text(formatPricePdf(line.lineTotal), 175, y);
+    y += 8;
+  });
+
+  y += 2;
+  doc.line(14, y, 196, y);
+  y += 8;
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(12);
+  doc.text(`Total: ${formatPricePdf(total)}`, 148, y);
+
+  doc.save(`fourfold-crackers-order-${Date.now()}.pdf`);
+}
+
+function setCheckoutStage(modal, stage) {
+  modal.dataset.stage = stage;
+}
+
 function setupCheckoutModal() {
   const modal = document.getElementById("checkout-modal");
   const openBtn = document.getElementById("cart-checkout");
   const closeBtn = document.getElementById("checkout-close");
-  const printBtn = document.getElementById("checkout-print");
+  const downloadPdfBtn = document.getElementById("checkout-download-pdf");
   const whatsappBtn = document.getElementById("checkout-whatsapp");
+  const confirmationDoneBtn = document.getElementById("checkout-confirmation-done");
   if (!modal || !openBtn) return;
 
   openBtn.addEventListener("click", () => {
+    setCheckoutStage(modal, "review");
     renderCheckoutModal();
     modal.showModal();
   });
 
   closeBtn?.addEventListener("click", () => modal.close());
+  confirmationDoneBtn?.addEventListener("click", () => modal.close());
 
   // Clicking the backdrop (outside the modal's own box) closes it.
   modal.addEventListener("click", (event) => {
     if (event.target === modal) modal.close();
   });
 
-  printBtn?.addEventListener("click", () => window.print());
+  downloadPdfBtn?.addEventListener("click", () => downloadOrderPdf());
 
   whatsappBtn?.addEventListener("click", () => {
     const message = buildWhatsAppMessage();
     const url = `https://wa.me/919345363963?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
+
+    setCheckoutStage(modal, "confirmation");
+    cart.clear();
+    renderCartSummary();
+    renderMenu();
   });
 }
 

@@ -401,32 +401,42 @@
 
     <!-- Checkout modal -->
     <dialog id="checkout-modal" class="checkout-modal" aria-labelledby="checkout-title">
-      <div class="flex flex-shrink-0 items-center justify-between border-b border-spice-100 px-5 py-4">
-        <h2 id="checkout-title" class="text-xl font-bold text-espresso-800">Your Order</h2>
-        <button
-          type="button"
-          id="checkout-close"
-          class="no-print text-2xl leading-none text-espresso-600 hover:text-espresso-800"
-          aria-label="Close"
-        >
-          ×
-        </button>
+      <div id="checkout-review" class="flex min-h-0 flex-1 flex-col">
+        <div class="flex flex-shrink-0 items-center justify-between border-b border-spice-100 px-5 py-4">
+          <h2 id="checkout-title" class="text-xl font-bold text-espresso-800">Your Order</h2>
+          <button
+            type="button"
+            id="checkout-close"
+            class="text-2xl leading-none text-espresso-600 hover:text-espresso-800"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <div id="checkout-items" class="flex-1 overflow-y-auto px-5 py-2"></div>
+
+        <div class="flex-shrink-0 border-t border-spice-100 px-5 py-4">
+          <div class="mb-4 flex items-center justify-between">
+            <span class="font-semibold text-espresso-800">Total</span>
+            <span id="checkout-total" class="text-2xl font-bold text-spice-600"></span>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <button type="button" id="checkout-download-pdf" class="btn-secondary flex-1">Download PDF</button>
+            <button type="button" id="checkout-whatsapp" class="btn-primary flex-1">Send via WhatsApp</button>
+          </div>
+        </div>
       </div>
 
-      <div id="checkout-items" class="flex-1 overflow-y-auto px-5 py-2"></div>
-
-      <div class="flex-shrink-0 border-t border-spice-100 px-5 py-4">
-        <div class="mb-4 flex items-center justify-between">
-          <span class="font-semibold text-espresso-800">Total</span>
-          <span id="checkout-total" class="text-2xl font-bold text-spice-600"></span>
-        </div>
-        <div class="no-print flex flex-col gap-3 sm:flex-row">
-          <button type="button" id="checkout-print" class="btn-secondary flex-1">Print / Save as PDF</button>
-          <button type="button" id="checkout-whatsapp" class="btn-primary flex-1">Send via WhatsApp</button>
-        </div>
+      <div id="checkout-confirmation" class="hidden flex-1 flex-col items-center justify-center gap-4 px-6 py-10 text-center">
+        <span class="flex h-14 w-14 items-center justify-center rounded-full bg-spice-100 text-3xl" aria-hidden="true">✓</span>
+        <h2 class="text-xl font-bold text-espresso-800">Order sent to WhatsApp!</h2>
+        <p class="text-espresso-600">Please tap Send there to reach us — we'll get in touch soon.</p>
+        <button type="button" id="checkout-confirmation-done" class="btn-primary mt-2 px-8">Done</button>
       </div>
     </dialog>
 
+    <script src="js/vendor/jspdf.umd.min.js"></script>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
