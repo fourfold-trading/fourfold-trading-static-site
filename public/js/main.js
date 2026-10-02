@@ -243,7 +243,7 @@ function renderMenu() {
       stepper.append(minusBtn, qtyDisplay, plusBtn);
 
       const priceWrap = document.createElement("div");
-      priceWrap.className = "flex flex-col items-end";
+      priceWrap.className = "flex w-20 flex-col items-end";
 
       const currentPrice = document.createElement("span");
       currentPrice.className = "font-bold text-spice-600";
