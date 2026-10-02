@@ -552,13 +552,6 @@ function setupMobileNav() {
   });
 }
 
-function setupFooterYear() {
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = String(new Date().getFullYear());
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   renderCategoryFilters();
   renderMenu();
@@ -568,5 +561,4 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBusinessInfo();
   renderFAQ();
   setupMobileNav();
-  setupFooterYear();
 });
