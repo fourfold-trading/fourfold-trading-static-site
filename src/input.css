@@ -68,6 +68,18 @@
     transform: rotate(45deg);
   }
 
+  .qty-stepper {
+    @apply inline-flex items-center gap-1 rounded-full border border-spice-100 bg-white px-1 py-1;
+  }
+
+  .qty-btn {
+    @apply flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-base font-bold leading-none text-spice-600 transition-colors hover:bg-spice-50;
+  }
+
+  .cart-summary-bar {
+    @apply fixed inset-x-0 bottom-0 z-50 border-t border-spice-700 bg-espresso-800 px-4 py-3 text-cream-100 shadow-lg;
+  }
+
   /* Hero-only accents (do not reuse elsewhere) */
   .hero-badge {
     @apply inline-flex items-center gap-2 rounded-full border border-spice-100 bg-spice-50 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-spice-600;
