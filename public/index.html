@@ -388,16 +388,44 @@
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <div>
           <p id="cart-summary-count" class="text-sm font-medium"></p>
-          <p class="text-xs text-cream-100/70">Call or WhatsApp us to place this order.</p>
-        </div>
-        <div class="flex items-center gap-4">
           <p id="cart-summary-total" class="text-xl font-bold text-turmeric-400"></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="cart-checkout" type="button" class="btn-primary px-5 py-2 text-sm">Checkout</button>
           <button id="cart-clear" type="button" class="text-sm text-cream-100/80 underline hover:text-cream-100">
             Clear
           </button>
         </div>
       </div>
     </div>
+
+    <!-- Checkout modal -->
+    <dialog id="checkout-modal" class="checkout-modal" aria-labelledby="checkout-title">
+      <div class="flex flex-shrink-0 items-center justify-between border-b border-spice-100 px-5 py-4">
+        <h2 id="checkout-title" class="text-xl font-bold text-espresso-800">Your Order</h2>
+        <button
+          type="button"
+          id="checkout-close"
+          class="no-print text-2xl leading-none text-espresso-600 hover:text-espresso-800"
+          aria-label="Close"
+        >
+          ×
+        </button>
+      </div>
+
+      <div id="checkout-items" class="flex-1 overflow-y-auto px-5 py-2"></div>
+
+      <div class="flex-shrink-0 border-t border-spice-100 px-5 py-4">
+        <div class="mb-4 flex items-center justify-between">
+          <span class="font-semibold text-espresso-800">Total</span>
+          <span id="checkout-total" class="text-2xl font-bold text-spice-600"></span>
+        </div>
+        <div class="no-print flex flex-col gap-3 sm:flex-row">
+          <button type="button" id="checkout-print" class="btn-secondary flex-1">Print / Save as PDF</button>
+          <button type="button" id="checkout-whatsapp" class="btn-primary flex-1">Send via WhatsApp</button>
+        </div>
+      </div>
+    </dialog>
 
     <script type="module" src="js/main.js"></script>
   </body>
