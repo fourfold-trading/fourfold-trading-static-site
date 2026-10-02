@@ -7,6 +7,58 @@ const priceListState = {
   categoryId: "all",
 };
 
+// Order builder state — persists across search/filter re-renders since it
+// lives outside renderMenu(). Keyed by product name (unique across the
+// catalog), value is { qty, price } where price is the parsed unit price.
+const cart = new Map();
+
+function parsePrice(priceStr) {
+  return parseInt(priceStr.replace(/[₹,]/g, ""), 10);
+}
+
+function formatPrice(amount) {
+  return "₹" + amount.toLocaleString("en-IN");
+}
+
+function getCartTotals() {
+  let items = 0;
+  let total = 0;
+  cart.forEach(({ qty, price }) => {
+    items += qty;
+    total += qty * price;
+  });
+  return { items, total };
+}
+
+function renderCartSummary() {
+  const bar = document.getElementById("cart-summary");
+  if (!bar) return;
+
+  const { items, total } = getCartTotals();
+
+  if (items === 0) {
+    bar.classList.add("hidden");
+    return;
+  }
+
+  bar.classList.remove("hidden");
+  const countEl = document.getElementById("cart-summary-count");
+  const totalEl = document.getElementById("cart-summary-total");
+  if (countEl) countEl.textContent = `${items} item${items === 1 ? "" : "s"} selected`;
+  if (totalEl) totalEl.textContent = formatPrice(total);
+}
+
+function setupCartSummary() {
+  const clearBtn = document.getElementById("cart-clear");
+  if (!clearBtn) return;
+
+  clearBtn.addEventListener("click", () => {
+    cart.clear();
+    renderCartSummary();
+    renderMenu();
+  });
+}
+
 function getFilteredCategories() {
   const query = priceListState.query.trim().toLowerCase();
 
@@ -24,7 +76,7 @@ function getFilteredCategories() {
 function categoryButtonClass(isActive) {
   return isActive
     ? "rounded-full border border-spice-500 bg-spice-500 px-4 py-2 text-sm font-semibold text-cream-50 transition-colors"
-    : "rounded-full border border-spice-200 bg-white px-4 py-2 text-sm font-semibold text-espresso-700 transition-colors hover:border-spice-300 hover:bg-spice-50";
+    : "rounded-full border border-spice-100 bg-white px-4 py-2 text-sm font-semibold text-espresso-700 transition-colors hover:border-spice-300 hover:bg-spice-50";
 }
 
 function renderCategoryFilters() {
@@ -139,12 +191,24 @@ function renderMenu() {
       const nameCell = document.createElement("th");
       nameCell.scope = "row";
       nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-espresso-800";
-      nameCell.textContent = item.name;
+
+      const nameLabel = document.createElement("label");
+      nameLabel.className = "flex cursor-pointer items-start gap-3";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "order-checkbox mt-1 h-4 w-4 flex-shrink-0 cursor-pointer accent-spice-500";
+
+      const nameTextWrap = document.createElement("span");
+      nameTextWrap.append(item.name);
 
       const mobileDesc = document.createElement("span");
       mobileDesc.className = "mt-1 block text-xs font-normal text-espresso-600 sm:hidden";
       mobileDesc.textContent = item.description;
-      nameCell.appendChild(mobileDesc);
+      nameTextWrap.appendChild(mobileDesc);
+
+      nameLabel.append(checkbox, nameTextWrap);
+      nameCell.appendChild(nameLabel);
       row.appendChild(nameCell);
 
       const descCell = document.createElement("td");
@@ -154,6 +218,29 @@ function renderMenu() {
 
       const priceCell = document.createElement("td");
       priceCell.className = "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right";
+
+      const priceRow = document.createElement("div");
+      priceRow.className = "flex items-center justify-end gap-3";
+
+      const stepper = document.createElement("div");
+      stepper.className = "qty-stepper";
+
+      const minusBtn = document.createElement("button");
+      minusBtn.type = "button";
+      minusBtn.className = "qty-btn";
+      minusBtn.setAttribute("aria-label", `Decrease quantity for ${item.name}`);
+      minusBtn.textContent = "−";
+
+      const qtyDisplay = document.createElement("span");
+      qtyDisplay.className = "w-5 text-center text-sm font-semibold text-espresso-800";
+
+      const plusBtn = document.createElement("button");
+      plusBtn.type = "button";
+      plusBtn.className = "qty-btn";
+      plusBtn.setAttribute("aria-label", `Increase quantity for ${item.name}`);
+      plusBtn.textContent = "+";
+
+      stepper.append(minusBtn, qtyDisplay, plusBtn);
 
       const priceWrap = document.createElement("div");
       priceWrap.className = "flex flex-col items-end";
@@ -170,8 +257,36 @@ function renderMenu() {
         priceWrap.appendChild(originalPrice);
       }
 
-      priceCell.appendChild(priceWrap);
+      priceRow.append(stepper, priceWrap);
+      priceCell.appendChild(priceRow);
       row.appendChild(priceCell);
+
+      const unitPrice = parsePrice(item.price);
+
+      function syncRow() {
+        const qty = cart.get(item.name)?.qty ?? 0;
+        checkbox.checked = qty > 0;
+        qtyDisplay.textContent = String(qty);
+      }
+
+      function updateQty(nextQty) {
+        const qty = Math.max(0, nextQty);
+        if (qty === 0) {
+          cart.delete(item.name);
+        } else {
+          cart.set(item.name, { qty, price: unitPrice });
+        }
+        syncRow();
+        renderCartSummary();
+      }
+
+      checkbox.addEventListener("change", () => {
+        updateQty(checkbox.checked ? Math.max(1, cart.get(item.name)?.qty ?? 1) : 0);
+      });
+      minusBtn.addEventListener("click", () => updateQty((cart.get(item.name)?.qty ?? 0) - 1));
+      plusBtn.addEventListener("click", () => updateQty((cart.get(item.name)?.qty ?? 0) + 1));
+
+      syncRow();
 
       tbody.appendChild(row);
     });
@@ -315,6 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCategoryFilters();
   renderMenu();
   setupPriceListSearch();
+  setupCartSummary();
   renderBusinessInfo();
   renderFAQ();
   setupMobileNav();

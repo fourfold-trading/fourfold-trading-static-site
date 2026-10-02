@@ -58,6 +58,14 @@ this same data — there's nothing to configure, the category buttons always mat
 whatever categories exist in `menuCategories`. Search matches product names
 (case-insensitive) within whichever category is currently selected.
 
+Each row has a checkbox and a quantity stepper so visitors can build an order list as they
+browse — there's no checkout, this is purely to help them total up what they want before
+calling or WhatsApp-ing it in. Selections persist in memory (not saved across a page
+reload) regardless of search/filter changes, and a summary bar at the bottom of the page
+shows the running item count and total, with a "Clear" button to reset. This is all in
+`public/js/main.js` (the `cart` Map and the functions around it) — no data file changes
+needed for it.
+
 To add a new category, copy an existing category object (with its own unique `id`) and
 add it to the array. To add/remove/edit products, add/remove/edit objects inside an
 `items` array. Reload the page (or wait for the next deploy) to see the change — no other
