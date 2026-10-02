@@ -59,6 +59,89 @@ function setupCartSummary() {
   });
 }
 
+function getCartLines() {
+  return Array.from(cart.entries()).map(([name, { qty, price }]) => ({
+    name,
+    qty,
+    price,
+    lineTotal: qty * price,
+  }));
+}
+
+function renderCheckoutModal() {
+  const itemsContainer = document.getElementById("checkout-items");
+  const totalEl = document.getElementById("checkout-total");
+  if (!itemsContainer || !totalEl) return;
+
+  const lines = getCartLines();
+  const { total } = getCartTotals();
+
+  const fragment = document.createDocumentFragment();
+  lines.forEach(({ name, qty, price, lineTotal }) => {
+    const row = document.createElement("div");
+    row.className = "flex items-start justify-between gap-4 border-b border-spice-50 py-3 last:border-b-0";
+
+    const info = document.createElement("div");
+    const nameEl = document.createElement("p");
+    nameEl.className = "font-semibold text-espresso-800";
+    nameEl.textContent = name;
+    const qtyEl = document.createElement("p");
+    qtyEl.className = "text-sm text-espresso-600";
+    qtyEl.textContent = `${qty} × ${formatPrice(price)}`;
+    info.append(nameEl, qtyEl);
+
+    const lineTotalEl = document.createElement("p");
+    lineTotalEl.className = "flex-shrink-0 font-bold text-spice-600";
+    lineTotalEl.textContent = formatPrice(lineTotal);
+
+    row.append(info, lineTotalEl);
+    fragment.appendChild(row);
+  });
+
+  itemsContainer.replaceChildren(fragment);
+  totalEl.textContent = formatPrice(total);
+}
+
+function buildWhatsAppMessage() {
+  const lines = getCartLines();
+  const { total } = getCartTotals();
+
+  const itemLines = lines
+    .map((line, index) => `${index + 1}. ${line.name} — Qty: ${line.qty} — ${formatPrice(line.lineTotal)}`)
+    .join("\n");
+
+  return `Hi Fourfold Crackers! I'd like to order:\n\n${itemLines}\n\nTotal: ${formatPrice(total)}`;
+}
+
+function setupCheckoutModal() {
+  const modal = document.getElementById("checkout-modal");
+  const openBtn = document.getElementById("cart-checkout");
+  const closeBtn = document.getElementById("checkout-close");
+  const printBtn = document.getElementById("checkout-print");
+  const whatsappBtn = document.getElementById("checkout-whatsapp");
+  if (!modal || !openBtn) return;
+
+  openBtn.addEventListener("click", () => {
+    renderCheckoutModal();
+    modal.showModal();
+  });
+
+  closeBtn?.addEventListener("click", () => modal.close());
+
+  // Clicking the backdrop (outside the modal's own box) closes it.
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+
+  printBtn?.addEventListener("click", () => window.print());
+
+  whatsappBtn?.addEventListener("click", () => {
+    const message = buildWhatsAppMessage();
+    const url = `https://wa.me/919345363963?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+}
+
 function getFilteredCategories() {
   const query = priceListState.query.trim().toLowerCase();
 
@@ -415,6 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMenu();
   setupPriceListSearch();
   setupCartSummary();
+  setupCheckoutModal();
   renderBusinessInfo();
   renderFAQ();
   setupMobileNav();
