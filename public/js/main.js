@@ -352,6 +352,22 @@ function renderMenu() {
 
       infoWrap.append(nameEl, descEl);
 
+      if (item.itemsList && item.itemsList.length > 0) {
+        const comboBtn = document.createElement("button");
+        comboBtn.type = "button";
+        comboBtn.className =
+          "mt-2.5 inline-flex items-center gap-1.5 rounded-full bg-spice-50 hover:bg-spice-100 px-3 py-1 text-xs font-semibold text-spice-600 transition-colors cursor-pointer";
+        comboBtn.innerHTML = `<span>📋</span> View Included Products (${item.itemsList.length})`;
+        comboBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openComboModal(item);
+        });
+        infoWrap.appendChild(comboBtn);
+
+        imgWrap.style.cursor = "pointer";
+        imgWrap.addEventListener("click", () => openComboModal(item));
+      }
+
       // Footer: Price & Stepper
       const footer = document.createElement("div");
       footer.className = "mt-4 flex items-end justify-between gap-2 border-t border-spice-50 pt-3";
@@ -548,12 +564,81 @@ function setupMobileNav() {
   });
 }
 
+function openComboModal(item) {
+  const modal = document.getElementById("combo-modal");
+  const titleEl = document.getElementById("combo-title");
+  const subtitleEl = document.getElementById("combo-subtitle");
+  const priceEl = document.getElementById("combo-total-price");
+  const tableBody = document.getElementById("combo-items-table");
+  if (!modal || !tableBody) return;
+
+  titleEl.textContent = item.name;
+  subtitleEl.textContent = item.description || "Package Contents";
+  priceEl.textContent = item.price;
+
+  const fragment = document.createDocumentFragment();
+  (item.itemsList || []).forEach((rowItem, index) => {
+    const tr = document.createElement("tr");
+    tr.className = "hover:bg-spice-50/50 transition-colors";
+
+    const tdSno = document.createElement("td");
+    tdSno.className = "px-3 py-2.5 text-espresso-600 font-mono text-xs";
+    tdSno.textContent = String(rowItem.sno || index + 1);
+
+    const tdName = document.createElement("td");
+    tdName.className = "px-3 py-2.5 font-medium text-espresso-800";
+    tdName.textContent = rowItem.name;
+
+    const tdQty = document.createElement("td");
+    tdQty.className = "px-3 py-2.5 text-right font-semibold text-spice-600";
+    tdQty.textContent = rowItem.qty;
+
+    tr.append(tdSno, tdName, tdQty);
+    fragment.appendChild(tr);
+  });
+
+  tableBody.replaceChildren(fragment);
+  modal.showModal();
+}
+
+function setupComboModal() {
+  const modal = document.getElementById("combo-modal");
+  const closeBtn = document.getElementById("combo-close");
+  const doneBtn = document.getElementById("combo-done-btn");
+  if (!modal) return;
+
+  closeBtn?.addEventListener("click", () => modal.close());
+  doneBtn?.addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+}
+
+function applyContextualFeatures() {
+  const isAffiliate = Boolean(window.IS_AFFILIATE);
+  document.body.classList.toggle("is-affiliate", isAffiliate);
+
+  if (isAffiliate) {
+    // Hide DOM elements marked for primary/retail build
+    document.querySelectorAll("[data-affiliate-hide]").forEach((el) => {
+      el.classList.add("hidden");
+    });
+
+    // Reveal DOM elements marked exclusively for affiliate build
+    document.querySelectorAll("[data-affiliate-only]").forEach((el) => {
+      el.classList.remove("hidden");
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  applyContextualFeatures();
   renderCategoryFilters();
   renderMenu();
   setupPriceListSearch();
   setupCartSummary();
   setupCheckoutModal();
+  setupComboModal();
   renderBusinessInfo();
   renderFAQ();
   setupMobileNav();

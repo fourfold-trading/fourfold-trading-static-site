@@ -21,6 +21,11 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎆</text></svg>"
     />
 
+    <!-- Context Flag Insurance: Executes synchronously before any ES modules or stylesheets -->
+    <script>
+      window.IS_AFFILIATE = false;
+    </script>
+
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -39,7 +44,7 @@
           <li><a class="nav-link" href="#menu">Price List</a></li>
           <li><a class="nav-link" href="#info">Info</a></li>
           <li><a class="nav-link" href="#faq">FAQ</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li data-affiliate-hide><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
 
         <a href="#menu" class="hidden md:inline-flex btn-primary">View Price List</a>
@@ -64,7 +69,7 @@
           <li><a class="block rounded-lg px-3 py-2 nav-link" href="#menu">Price List</a></li>
           <li><a class="block rounded-lg px-3 py-2 nav-link" href="#info">Info</a></li>
           <li><a class="block rounded-lg px-3 py-2 nav-link" href="#faq">FAQ</a></li>
-          <li><a class="block rounded-lg px-3 py-2 nav-link" href="#contact">Contact</a></li>
+          <li data-affiliate-hide><a class="block rounded-lg px-3 py-2 nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </header>
@@ -202,7 +207,7 @@
             </p>
             <div class="mt-8 flex flex-wrap gap-4">
               <a href="#menu" class="btn-primary hero-btn-glow">View Price List</a>
-              <a href="#contact" class="btn-secondary">Contact Us</a>
+              <a href="#contact" class="btn-secondary" data-affiliate-hide>Contact Us</a>
             </div>
           </div>
         </div>
@@ -301,7 +306,7 @@
       </section>
 
       <!-- Contact -->
-      <section id="contact" class="px-4 py-16 sm:px-6">
+      <section id="contact" data-affiliate-hide class="px-4 py-16 sm:px-6">
         <div class="mx-auto max-w-6xl">
           <div class="mb-12 text-center">
             <p class="section-eyebrow">Get In Touch</p>
@@ -346,7 +351,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-spice-100 bg-espresso-800 text-cream-100">
+    <footer data-affiliate-hide class="border-t border-spice-100 bg-espresso-800 text-cream-100">
       <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center sm:px-6">
         <a
           href="https://wa.me/919345363963"
@@ -404,7 +409,7 @@
           </div>
           <div class="flex flex-col gap-3 sm:flex-row">
             <button type="button" id="checkout-download-pdf" class="btn-secondary flex-1">Download PDF</button>
-            <button type="button" id="checkout-whatsapp" class="btn-primary flex-1">Send via WhatsApp</button>
+            <button type="button" id="checkout-whatsapp" class="btn-primary flex-1" data-affiliate-hide>Send via WhatsApp</button>
           </div>
         </div>
       </div>
@@ -414,6 +419,47 @@
         <h2 class="text-xl font-bold text-espresso-800">Order sent to WhatsApp!</h2>
         <p class="text-espresso-600">Please tap Send there to reach us — we'll get in touch soon.</p>
         <button type="button" id="checkout-confirmation-done" class="btn-primary mt-2 px-8">Done</button>
+      </div>
+    </dialog>
+
+    <!-- Combo Details Modal -->
+    <dialog id="combo-modal" class="checkout-modal sm:max-w-xl" aria-labelledby="combo-title">
+      <div class="flex min-h-0 flex-1 flex-col">
+        <div class="flex flex-shrink-0 items-center justify-between border-b border-spice-100 px-5 py-4">
+          <div>
+            <h2 id="combo-title" class="text-xl font-bold text-espresso-800"></h2>
+            <p id="combo-subtitle" class="text-xs text-espresso-600 mt-0.5"></p>
+          </div>
+          <button
+            type="button"
+            id="combo-close"
+            class="text-2xl leading-none text-espresso-600 hover:text-espresso-800"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-5 py-4">
+          <table class="w-full border-collapse text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-spice-100 bg-spice-50 text-espresso-700">
+                <th class="px-3 py-2.5 font-semibold">#</th>
+                <th class="px-3 py-2.5 font-semibold">Product Name</th>
+                <th class="px-3 py-2.5 font-semibold text-right">Quantity</th>
+              </tr>
+            </thead>
+            <tbody id="combo-items-table" class="divide-y divide-spice-50 text-espresso-700"></tbody>
+          </table>
+        </div>
+
+        <div class="flex-shrink-0 border-t border-spice-100 px-5 py-4 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-espresso-600 block">Package Price</span>
+            <span id="combo-total-price" class="text-xl font-bold text-spice-600"></span>
+          </div>
+          <button type="button" id="combo-done-btn" class="btn-primary px-6 py-2 text-sm">Close</button>
+        </div>
       </div>
     </dialog>
 
