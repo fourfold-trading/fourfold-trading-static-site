@@ -64,7 +64,7 @@ const rawMenuCategories = [
       { name: "10cm Electric Sparklers", image: "assets/images/10cm-electric.webp", description: "Sold per box", price: "₹20", originalPrice: "₹40" , affiliatePrice: "₹25", affiliateOriginalPrice: "₹50" },
       { name: "10cm Colour Sparklers", image: "assets/images/10cm_colour.jpg", description: "Sold per box", price: "₹20", originalPrice: "₹40" , affiliatePrice: "₹25", affiliateOriginalPrice: "₹50" },
       { name: "Rotating Sparklers", image: "assets/images/rotating-sparklers.jpg", description: "Sold per box", price: "₹190", originalPrice: "₹380" , affiliatePrice: "₹210", affiliateOriginalPrice: "₹420" },
-      { name: "Fancy Sparklers", image: "assets/images/fancy_sparklers.webp", description: "Sold per box", price: "₹110", originalPrice: "₹220" , affiliatePrice: "₹120", affiliateOriginalPrice: "₹240" },
+      { name: "Fancy Sparklers", image: "assets/images/fancy_sparklers.png", description: "Sold per box", price: "₹110", originalPrice: "₹220" , affiliatePrice: "₹120", affiliateOriginalPrice: "₹240" },
       { name: "10cm 5-in-1 Mentos", image: "assets/images/10cm_5in1_mentos_sparklers.jpg", description: "Sold per box", price: "₹120", originalPrice: "₹240" , affiliatePrice: "₹130", affiliateOriginalPrice: "₹260" },
       { name: "15cm 5-in-1 Sparklers", image: "assets/images/15cm_5in1_sparklers.jpg", description: "Sold per box", price: "₹270", originalPrice: "₹540" , affiliatePrice: "₹295", affiliateOriginalPrice: "₹590" },
       { name: "30cm 5-in-1", image: "assets/images/30cm_5in1-sparklers.jpg", description: "Sold per box", price: "₹250", originalPrice: "₹500" , affiliatePrice: "₹275", affiliateOriginalPrice: "₹550" },
@@ -181,7 +181,7 @@ const rawMenuCategories = [
     items: [
       {
         name: "Adult Combo - ₹3,000",
-        image: "assets/images/classic_bomb.jpeg",
+        image: "assets/images/combo-images/adult_combo_3000.png",
         description: "Action-packed 20-item sound & high-thrill fireworks package.",
         price: "₹2,999",
         originalPrice: "₹6,620",
@@ -210,7 +210,7 @@ const rawMenuCategories = [
       },
       {
         name: "Adult Combo - ₹4,000",
-        image: "assets/images/digital_bomb.jpeg",
+        image: "assets/images/combo-images/adult_combo_4000.png",
         description: "Deluxe 28-item bumper sound & mega-aerial celebration pack.",
         price: "₹3,999",
         originalPrice: "₹8,830",
@@ -247,7 +247,7 @@ const rawMenuCategories = [
       },
       {
         name: "Newly Married Couple Combo - ₹4,000",
-        image: "assets/images/3pc.png",
+        image: "assets/images/combo-images/newly_married_couple_combo_4000.png",
         description: "Romantic & sparkling fireworks package with 41 items for newly married couples.",
         price: "₹3,999",
         originalPrice: "₹8,916",
@@ -297,7 +297,7 @@ const rawMenuCategories = [
       },
       {
         name: "Newly Married Couple Combo - ₹5,000",
-        image: "assets/images/3pc.png",
+        image: "assets/images/combo-images/newly_married_couple_combo_5000.png",
         description: "Grand celebration hamper for couples with 51 items including aerials, bombs & fountains.",
         price: "₹4,999",
         originalPrice: "₹11,126",
@@ -357,7 +357,7 @@ const rawMenuCategories = [
       },
       {
         name: "Family Combo - ₹3,000",
-        image: "assets/images/flower_pots_colour_koti.jpg",
+        image: "assets/images/combo-images/family_combo_3000.png",
         description: "Bumper 33-item family celebration package suitable for all age groups.",
         price: "₹2,999",
         originalPrice: "₹6,828",
@@ -399,7 +399,7 @@ const rawMenuCategories = [
       },
       {
         name: "Family Combo - ₹4,000",
-        image: "assets/images/3pc.png",
+        image: "assets/images/combo-images/family_combo_4000.png",
         description: "Deluxe family bumper pack with 42 items for complete celebration.",
         price: "₹3,999",
         originalPrice: "₹8,938",
@@ -450,7 +450,7 @@ const rawMenuCategories = [
       },
       {
         name: "Kids Combo - ₹2,000",
-        image: "assets/images/mickey_mouse.webp",
+        image: "assets/images/combo-images/kids_combo.png",
         description: "Safe & colorful 28-item fireworks pack specially curated for kids.",
         price: "₹1,999",
         originalPrice: "₹4,398",
@@ -487,7 +487,7 @@ const rawMenuCategories = [
       },
       {
         name: "Fancy Combo - ₹3,000",
-        image: "assets/images/3pc.png",
+        image: "assets/images/combo-images/fancy_combo.png",
         description: "Exclusive fancy crackers collection with 25 items featuring visual effects, aerials & sparklers.",
         price: "₹2,999",
         originalPrice: "₹6,680",
