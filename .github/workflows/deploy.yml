@@ -1,53 +1,64 @@
-name: Deploy to GitHub Pages
+name: Deploy Primary and Affiliate Sites
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
+    branches:
+      - main # Triggers the automation every time you push to the main branch
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '20'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install Project Dependencies
+        run: npm install
 
-      - name: Build Tailwind CSS
+      - name: Build Project (Compile Tailwind CSS & Vendor Assets)
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
+      # --- 1. DEPLOY THE PRIMARY SITE ---
+      - name: Upload Primary Site Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: 'public' # Serves static files directly from the public/ directory
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy Primary to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # --- 2. BUILD & DEPLOY THE AFFILIATE SITE ---
+      - name: Transform and Build Affiliate Site
+        run: |
+          # Create a standalone target build folder
+          mkdir affiliate_dist
+          
+          # Copy all public assets (HTML, CSS, JS modules, images, vendor libraries)
+          cp -r public/* affiliate_dist/
+          
+          # Replace the default window.IS_AFFILIATE = false flag with window.IS_AFFILIATE = true
+          sed -i 's/window.IS_AFFILIATE = false;/window.IS_AFFILIATE = true;/' affiliate_dist/index.html
+
+      - name: Push to Affiliate GitHub Pages Repository
+        run: |
+          cd affiliate_dist
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Automated build synchronization from Primary Repo"
+          # Pushes the modified assets directly to the target secondary project repo
+          # Replace <your-affiliate-repo-name> below with your actual affiliate GitHub repository name
+          git push --force https://x-access-token:${{ secrets.AFFILIATE_REPO_TOKEN }}@github.com/${{ github.repository_owner }}/fourfold-trading-affiliate-site.git main:gh-pages
+
