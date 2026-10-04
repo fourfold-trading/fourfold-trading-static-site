@@ -296,69 +296,82 @@ function renderMenu() {
 
     const heading = document.createElement("h3");
     heading.className =
-      "sticky top-[73px] md:top-[81px] z-10 mb-4 bg-cream-50 py-2 text-lg font-bold text-espresso-800 sm:text-2xl";
+      "sticky top-[73px] md:top-[81px] z-20 mb-6 rounded-lg bg-cream-50/95 py-2.5 text-lg font-bold text-espresso-800 backdrop-blur sm:text-2xl";
     heading.id = `category-${category.id}`;
     heading.textContent = category.name;
     section.appendChild(heading);
 
-    const scrollWrap = document.createElement("div");
-    scrollWrap.className =
-      "overflow-x-auto rounded-2xl border border-spice-100 bg-white shadow-sm";
+    const grid = document.createElement("div");
+    grid.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6";
 
-    const table = document.createElement("table");
-    table.className = "w-full border-collapse text-left";
-    table.setAttribute("aria-labelledby", heading.id);
-
-    const thead = document.createElement("thead");
-    const headRow = document.createElement("tr");
-    headRow.className = "border-b border-spice-100 bg-spice-50";
-    [
-      { label: "Product", hideOnMobile: false, align: "" },
-      { label: "Description", hideOnMobile: true, align: "" },
-      { label: "Price", hideOnMobile: false, align: "text-right" },
-    ].forEach(({ label, hideOnMobile, align }) => {
-      const th = document.createElement("th");
-      th.scope = "col";
-      th.textContent = label;
-      th.className = [
-        "px-3 sm:px-5 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-espresso-700",
-        hideOnMobile ? "hidden sm:table-cell" : "",
-        align,
-      ]
-        .filter(Boolean)
-        .join(" ");
-      headRow.appendChild(th);
-    });
-    thead.appendChild(headRow);
-    table.appendChild(thead);
-
-    const tbody = document.createElement("tbody");
     category.items.forEach((item) => {
-      const row = document.createElement("tr");
-      row.className = "border-b border-spice-50 last:border-b-0 even:bg-spice-50/40";
+      const card = document.createElement("div");
+      card.className = "product-card";
 
-      const nameCell = document.createElement("th");
-      nameCell.scope = "row";
-      nameCell.className = "px-3 sm:px-5 py-3 sm:py-4 align-top font-semibold text-espresso-800";
-      nameCell.append(item.name);
+      // Image container
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "product-card-img-wrap";
 
-      const mobileDesc = document.createElement("span");
-      mobileDesc.className = "mt-1 block text-xs font-normal text-espresso-600 sm:hidden";
-      mobileDesc.textContent = item.description;
-      nameCell.appendChild(mobileDesc);
-      row.appendChild(nameCell);
+      // Discount Badge
+      if (item.originalPrice) {
+        const pCurrent = parsePrice(item.price);
+        const pOrig = parsePrice(item.originalPrice);
+        if (pOrig > pCurrent) {
+          const discountPct = Math.round((1 - pCurrent / pOrig) * 100);
+          const badge = document.createElement("span");
+          badge.className = "product-badge";
+          badge.textContent = `${discountPct}% OFF`;
+          imgWrap.appendChild(badge);
+        }
+      }
 
-      const descCell = document.createElement("td");
-      descCell.textContent = item.description;
-      descCell.className = "hidden sm:table-cell px-5 py-4 align-top text-sm text-espresso-600";
-      row.appendChild(descCell);
+      const img = document.createElement("img");
+      img.className = "product-card-img";
+      img.src = item.image || "assets/images/3pc.png";
+      img.alt = item.name;
+      img.loading = "lazy";
+      img.onerror = () => {
+        img.src = "assets/images/3pc.png";
+      };
+      imgWrap.appendChild(img);
+      card.appendChild(imgWrap);
 
-      const priceCell = document.createElement("td");
-      priceCell.className = "whitespace-nowrap px-3 sm:px-5 py-3 sm:py-4 align-top text-right";
+      // Card Content
+      const content = document.createElement("div");
+      content.className = "flex flex-1 flex-col justify-between";
 
-      const priceRow = document.createElement("div");
-      priceRow.className = "flex items-center justify-end gap-1.5";
+      const infoWrap = document.createElement("div");
+      const nameEl = document.createElement("h4");
+      nameEl.className =
+        "font-display text-base font-bold text-espresso-800 transition-colors duration-200 group-hover:text-spice-600 line-clamp-2";
+      nameEl.textContent = item.name;
 
+      const descEl = document.createElement("p");
+      descEl.className = "mt-1 text-xs text-espresso-600 line-clamp-2";
+      descEl.textContent = item.description;
+
+      infoWrap.append(nameEl, descEl);
+
+      // Footer: Price & Stepper
+      const footer = document.createElement("div");
+      footer.className = "mt-4 flex items-end justify-between gap-2 border-t border-spice-50 pt-3";
+
+      const priceWrap = document.createElement("div");
+      priceWrap.className = "flex flex-col";
+
+      const currentPrice = document.createElement("span");
+      currentPrice.className = "text-base font-extrabold text-spice-600";
+      currentPrice.textContent = item.price;
+      priceWrap.appendChild(currentPrice);
+
+      if (item.originalPrice) {
+        const originalPrice = document.createElement("span");
+        originalPrice.className = "text-xs text-espresso-600/60 line-through";
+        originalPrice.textContent = item.originalPrice;
+        priceWrap.appendChild(originalPrice);
+      }
+
+      // Stepper
       const stepper = document.createElement("div");
       stepper.className = "qty-stepper";
 
@@ -378,31 +391,17 @@ function renderMenu() {
       plusBtn.textContent = "+";
 
       stepper.append(minusBtn, qtyDisplay, plusBtn);
+      footer.append(priceWrap, stepper);
 
-      const priceWrap = document.createElement("div");
-      priceWrap.className = "flex w-20 flex-col items-end";
-
-      const currentPrice = document.createElement("span");
-      currentPrice.className = "font-bold text-spice-600";
-      currentPrice.textContent = item.price;
-      priceWrap.appendChild(currentPrice);
-
-      if (item.originalPrice) {
-        const originalPrice = document.createElement("span");
-        originalPrice.className = "text-xs text-espresso-600/60 line-through";
-        originalPrice.textContent = item.originalPrice;
-        priceWrap.appendChild(originalPrice);
-      }
-
-      priceRow.append(stepper, priceWrap);
-      priceCell.appendChild(priceRow);
-      row.appendChild(priceCell);
+      content.append(infoWrap, footer);
+      card.appendChild(content);
 
       const unitPrice = parsePrice(item.price);
 
-      function syncRow() {
+      function syncCard() {
         const qty = cart.get(item.name)?.qty ?? 0;
         qtyDisplay.textContent = String(qty);
+        card.dataset.selected = String(qty > 0);
       }
 
       function updateQty(nextQty) {
@@ -412,21 +411,18 @@ function renderMenu() {
         } else {
           cart.set(item.name, { qty, price: unitPrice });
         }
-        syncRow();
+        syncCard();
         renderCartSummary();
       }
 
       minusBtn.addEventListener("click", () => updateQty((cart.get(item.name)?.qty ?? 0) - 1));
       plusBtn.addEventListener("click", () => updateQty((cart.get(item.name)?.qty ?? 0) + 1));
 
-      syncRow();
-
-      tbody.appendChild(row);
+      syncCard();
+      grid.appendChild(card);
     });
-    table.appendChild(tbody);
 
-    scrollWrap.appendChild(table);
-    section.appendChild(scrollWrap);
+    section.appendChild(grid);
     fragment.appendChild(section);
   });
 

@@ -5,7 +5,7 @@
   "description": "Static landing page + online price list for Fourfold Crackers (Diwali & festival fireworks)",
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./public/css/style.css --minify",
-    "copy:vendor": "mkdir -p public/js/vendor && cp node_modules/jspdf/dist/jspdf.umd.min.js public/js/vendor/jspdf.umd.min.js",
+    "copy:vendor": "node -e \"fs.mkdirSync('public/js/vendor', { recursive: true }); fs.copyFileSync('node_modules/jspdf/dist/jspdf.umd.min.js', 'public/js/vendor/jspdf.umd.min.js')\"",
     "build": "npm run build:css && npm run copy:vendor",
     "postinstall": "npm run copy:vendor",
     "dev:css": "tailwindcss -i ./src/input.css -o ./public/css/style.css --watch",

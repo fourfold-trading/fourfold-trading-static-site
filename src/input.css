@@ -84,11 +84,6 @@
     @apply m-auto flex h-full max-h-full w-full max-w-full flex-col rounded-none border-0 bg-white p-0 shadow-xl sm:h-auto sm:max-h-[85vh] sm:max-w-lg sm:rounded-2xl;
   }
 
-  /* The dialog's own `display: flex` (needed while open) is an author-origin
-     rule, so it always beats the browser's UA-stylesheet `dialog:not([open])
-     { display: none }` — the dialog would otherwise stay visually rendered
-     after .close() even though .open becomes false. Restore the native
-     hide-when-closed behavior explicitly. */
   .checkout-modal:not([open]) {
     @apply hidden;
   }
@@ -105,7 +100,7 @@
     @apply flex;
   }
 
-  /* Hero-only accents (do not reuse elsewhere) */
+  /* Hero-only accents */
   .hero-badge {
     @apply inline-flex items-center gap-2 rounded-full border border-spice-100 bg-spice-50 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-spice-600;
   }
@@ -118,11 +113,82 @@
     @apply transition-shadow hover:shadow-lg hover:shadow-spice-500/40;
   }
 
-  /* Hero background firework animation — CSS-only, no JS */
   .firework-burst {
     transform-origin: 100px 100px;
     animation: firework-burst 4s ease-out infinite;
   }
+}
+
+/* Custom Product Card Component */
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid #f6dcd0;
+  background-color: #ffffff;
+  padding: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: #e8b49b;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card[data-selected="true"] {
+  border-color: #c1622d;
+  background-color: #fdf1eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-img-wrap {
+  position: relative;
+  margin-bottom: 0.75rem;
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: #fdf5ee;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card-img {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.group:hover .product-card-img,
+.product-card:hover .product-card-img {
+  transform: scale(1.05);
+}
+
+.product-badge {
+  position: absolute;
+  left: 0.625rem;
+  top: 0.625rem;
+  z-index: 2;
+  border-radius: 9999px;
+  background-color: #c1622d;
+  padding: 0.125rem 0.625rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fffdf9;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 @keyframes firework-burst {
