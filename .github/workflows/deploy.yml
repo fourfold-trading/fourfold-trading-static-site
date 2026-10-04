@@ -60,5 +60,5 @@ jobs:
           git commit -m "Automated build synchronization from Primary Repo"
           # Pushes the modified assets directly to the target secondary project repo
           # Replace <your-affiliate-repo-name> below with your actual affiliate GitHub repository name
-          git push --force https://x-access-token:${{ secrets.AFFILIATE_REPO_TOKEN }}@github.com/${{ github.repository_owner }}/fourfold-trading-affiliate-site.git main:gh-pages
+          git push --force https://${{ secrets.AFFILIATE_REPO_TOKEN }}@github.com/${{ github.repository_owner }}/fourfold-trading-affiliate-site.git main:gh-pages
 
